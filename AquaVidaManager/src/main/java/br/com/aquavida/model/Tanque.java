@@ -12,6 +12,10 @@ public class Tanque {
 
     private double phIdeal;
 
+    private int ocupacaoAtual;
+
+    private int espacosDisponiveis;
+
     public Tanque() {
     }
 
@@ -53,6 +57,22 @@ public class Tanque {
 
     public void setPhIdeal(double phIdeal) {
         this.phIdeal = phIdeal;
+    }
+
+    public int getOcupacaoAtual() {
+        return ocupacaoAtual;
+    }
+
+    public void setOcupacaoAtual(int ocupacaoAtual) {
+        this.ocupacaoAtual = ocupacaoAtual;
+    }
+
+    public int getEspacosDisponiveis() {
+        return espacosDisponiveis;
+    }
+
+    public void setEspacosDisponiveis(int espacosDisponiveis) {
+        this.espacosDisponiveis = espacosDisponiveis;
     }
 
 }

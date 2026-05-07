@@ -33,6 +33,8 @@
         <th>Capacidade</th>
         <th>Temperatura</th>
         <th>pH</th>
+        <th>Ocupação Atual</th>
+        <th>Espaços Disponíveis</th>
 
     </tr>
 
@@ -51,6 +53,10 @@
     <td><%= t.getTemperaturaIdeal() %></td>
 
     <td><%= t.getPhIdeal() %></td>
+
+    <td><%= t.getOcupacaoAtual() %></td>
+
+    <td><%= t.getEspacosDisponiveis() %></td>
 
 </tr>
 

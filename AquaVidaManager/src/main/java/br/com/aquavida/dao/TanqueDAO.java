@@ -51,7 +51,13 @@ public class TanqueDAO {
                 new ArrayList<>();
 
         String sql =
-                "SELECT * FROM tanque";
+                "SELECT " +
+                        "t.*, " +
+                        "IFNULL(SUM(p.quantidade), 0) AS ocupacao " +
+                        "FROM tanque t " +
+                        "LEFT JOIN peixe p " +
+                        "ON t.id = p.tanque_id " +
+                        "GROUP BY t.id";
 
         try {
 
@@ -87,6 +93,17 @@ public class TanqueDAO {
 
                 tanque.setPhIdeal(
                         rs.getDouble("ph_ideal")
+                );
+
+                int ocupacao =
+                        rs.getInt("ocupacao");
+
+                tanque.setOcupacaoAtual(
+                        ocupacao
+                );
+
+                tanque.setEspacosDisponiveis(
+                        tanque.getCapacidade() - ocupacao
                 );
 
                 lista.add(tanque);
