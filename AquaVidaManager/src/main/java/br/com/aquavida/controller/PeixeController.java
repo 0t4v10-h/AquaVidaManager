@@ -70,37 +70,110 @@ public class PeixeController extends HttpServlet {
             HttpServletResponse resp
     ) throws ServletException, IOException {
 
+        String nome =
+                req.getParameter("nome");
+
+        String especie =
+                req.getParameter("especie");
+
+        String quantidadeStr =
+                req.getParameter("quantidade");
+
+        String tanqueStr =
+                req.getParameter("tanque");
+
+        if(nome == null || nome.isEmpty() ||
+                especie == null || especie.isEmpty() ||
+                quantidadeStr == null || quantidadeStr.isEmpty() ||
+                tanqueStr == null || tanqueStr.isEmpty()){
+
+            req.setAttribute(
+                    "erro",
+                    "Preencha todos os campos!"
+            );
+
+            TanqueDAO tanqueDAO =
+                    new TanqueDAO();
+
+            req.setAttribute(
+                    "listaTanques",
+                    tanqueDAO.listar()
+            );
+
+            req.getRequestDispatcher(
+                    "views/cadastro-peixe.jsp"
+            ).forward(req, resp);
+
+            return;
+
+        }
+
         Peixe peixe =
                 new Peixe();
 
         peixe.setNome(
-                req.getParameter("nome")
+                nome
         );
 
         peixe.setEspecie(
-                req.getParameter("especie")
+                especie
         );
 
         peixe.setQuantidade(
                 Integer.parseInt(
-                        req.getParameter("quantidade")
+                        quantidadeStr
                 )
         );
 
         peixe.setTanqueId(
                 Integer.parseInt(
-                        req.getParameter("tanque")
+                        tanqueStr
                 )
         );
 
-        PeixeDAO dao =
-                new PeixeDAO();
+        TanqueDAO tanqueDAO =
+                new TanqueDAO();
 
-        dao.salvar(peixe);
+        Tanque tanque =
+                tanqueDAO.buscarPorId(
+                        peixe.getTanqueId()
+                );
 
-        resp.sendRedirect(
-                "/AquaVidaManager/peixes"
-        );
+        int quantidadeNova =
+                peixe.getQuantidade();
+
+        if(quantidadeNova >
+                tanque.getEspacosDisponiveis()){
+
+            req.setAttribute(
+                    "erro",
+                    "Capacidade do tanque excedida!"
+            );
+
+            ArrayList<Tanque> listaTanques =
+                    tanqueDAO.listar();
+
+            req.setAttribute(
+                    "listaTanques",
+                    listaTanques
+            );
+
+            req.getRequestDispatcher(
+                    "views/cadastro-peixe.jsp"
+            ).forward(req, resp);
+
+        }else{
+
+            PeixeDAO dao =
+                    new PeixeDAO();
+
+            dao.salvar(peixe);
+
+            resp.sendRedirect(
+                    "/AquaVidaManager/peixes"
+            );
+
+        }
 
     }
 

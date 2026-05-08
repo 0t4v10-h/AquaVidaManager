@@ -27,7 +27,7 @@
     }
 %>
 
-<form action="../login" method="post">
+<form action="/AquaVidaManager/login" method="post">
 
     <label>Login:</label>
 

@@ -18,6 +18,21 @@
 
 <h2>Cadastrar Peixe</h2>
 
+<%
+    String erro =
+            (String) request.getAttribute("erro");
+
+    if(erro != null){
+%>
+
+<p style="color:red;">
+    <%= erro %>
+</p>
+
+<%
+    }
+%>
+
 <form action="/AquaVidaManager/peixes" method="post">
 
     <label>Nome:</label>

@@ -126,4 +126,71 @@ public class TanqueDAO {
 
     }
 
+    public Tanque buscarPorId(int id){
+
+        String sql =
+                "SELECT " +
+                        "t.*, " +
+                        "IFNULL(SUM(p.quantidade), 0) AS ocupacao " +
+                        "FROM tanque t " +
+                        "LEFT JOIN peixe p " +
+                        "ON t.id = p.tanque_id " +
+                        "WHERE t.id = ? " +
+                        "GROUP BY t.id";
+
+        try {
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+            ResultSet rs =
+                    stmt.executeQuery();
+
+            if(rs.next()){
+
+                Tanque tanque =
+                        new Tanque();
+
+                tanque.setId(
+                        rs.getInt("id")
+                );
+
+                tanque.setNome(
+                        rs.getString("nome")
+                );
+
+                tanque.setCapacidade(
+                        rs.getInt("capacidade")
+                );
+
+                int ocupacao =
+                        rs.getInt("ocupacao");
+
+                tanque.setOcupacaoAtual(
+                        ocupacao
+                );
+
+                tanque.setEspacosDisponiveis(
+                        tanque.getCapacidade() - ocupacao
+                );
+
+                return tanque;
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        return null;
+
+    }
+
 }

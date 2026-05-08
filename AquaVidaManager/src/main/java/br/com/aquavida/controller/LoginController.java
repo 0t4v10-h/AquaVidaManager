@@ -54,7 +54,7 @@ public class LoginController extends HttpServlet {
             );
 
             resp.sendRedirect(
-                    "/AquaVidaManager/views/dashboard.jsp"
+                    "/AquaVidaManager/peixes"
             );
 
         }
