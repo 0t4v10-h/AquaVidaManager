@@ -21,20 +21,78 @@ public class TanqueController extends HttpServlet {
             HttpServletResponse resp
     ) throws ServletException, IOException {
 
+        String acao =
+                req.getParameter("acao");
+
         TanqueDAO dao =
                 new TanqueDAO();
 
-        ArrayList<Tanque> lista =
-                dao.listar();
+        if("excluir".equals(acao)){
 
-        req.setAttribute(
-                "listaTanques",
-                lista
-        );
+            int id =
+                    Integer.parseInt(
+                            req.getParameter("id")
+                    );
 
-        req.getRequestDispatcher(
-                "views/listar-tanques.jsp"
-        ).forward(req, resp);
+            if(dao.possuiPeixes(id)){
+
+                req.setAttribute(
+                        "erro",
+                        "Não é possível excluir um tanque com peixes cadastrados."
+                );
+
+            }else{
+
+                dao.excluir(id);
+
+            }
+
+            ArrayList<Tanque> lista =
+                    dao.listar();
+
+            req.setAttribute(
+                    "listaTanques",
+                    lista
+            );
+
+            req.getRequestDispatcher(
+                    "views/listar-tanques.jsp"
+            ).forward(req, resp);
+
+        } else if("editar".equals(acao)) {
+
+            int id =
+                    Integer.parseInt(
+                            req.getParameter("id")
+                    );
+
+            Tanque tanque =
+                    dao.buscarPorId(id);
+
+            req.setAttribute(
+                    "tanque",
+                    tanque
+            );
+
+            req.getRequestDispatcher(
+                    "views/editar-tanque.jsp"
+            ).forward(req, resp);
+
+        } else {
+
+            ArrayList<Tanque> lista =
+                    dao.listar();
+
+            req.setAttribute(
+                    "listaTanques",
+                    lista
+            );
+
+            req.getRequestDispatcher(
+                    "views/listar-tanques.jsp"
+            ).forward(req, resp);
+
+        }
 
     }
 
@@ -69,10 +127,25 @@ public class TanqueController extends HttpServlet {
                 )
         );
 
+        String idStr =
+                req.getParameter("id");
+
         TanqueDAO dao =
                 new TanqueDAO();
 
-        dao.salvar(tanque);
+        if(idStr != null && !idStr.isEmpty()){
+
+            tanque.setId(
+                    Integer.parseInt(idStr)
+            );
+
+            dao.atualizar(tanque);
+
+        }else{
+
+            dao.salvar(tanque);
+
+        }
 
         resp.sendRedirect(
                 "/AquaVidaManager/tanques"

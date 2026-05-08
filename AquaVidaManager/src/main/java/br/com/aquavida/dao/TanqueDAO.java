@@ -193,4 +193,126 @@ public class TanqueDAO {
 
     }
 
+    public void atualizar(Tanque tanque){
+
+        String sql =
+                "UPDATE tanque SET " +
+                        "nome = ?, " +
+                        "capacidade = ?, " +
+                        "temperatura_ideal = ?, " +
+                        "ph_ideal = ? " +
+                        "WHERE id = ?";
+
+        try {
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            stmt.setString(
+                    1,
+                    tanque.getNome()
+            );
+
+            stmt.setInt(
+                    2,
+                    tanque.getCapacidade()
+            );
+
+            stmt.setDouble(
+                    3,
+                    tanque.getTemperaturaIdeal()
+            );
+
+            stmt.setDouble(
+                    4,
+                    tanque.getPhIdeal()
+            );
+
+            stmt.setInt(
+                    5,
+                    tanque.getId()
+            );
+
+            stmt.execute();
+
+            stmt.close();
+
+            conexao.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+    public void excluir(int id){
+
+        String sql =
+                "DELETE FROM tanque WHERE id = ?";
+
+        try {
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+            stmt.execute();
+
+            stmt.close();
+
+            conexao.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+    public boolean possuiPeixes(int tanqueId){
+
+        String sql =
+                "SELECT COUNT(*) AS total " +
+                        "FROM peixe " +
+                        "WHERE tanque_id = ?";
+
+        try {
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            stmt.setInt(1, tanqueId);
+
+            ResultSet rs =
+                    stmt.executeQuery();
+
+            if(rs.next()){
+
+                return rs.getInt("total") > 0;
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+        return false;
+
+    }
+
 }

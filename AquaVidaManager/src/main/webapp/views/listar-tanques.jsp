@@ -18,6 +18,21 @@
 
 <h2>Lista de Tanques</h2>
 
+<%
+    String erro =
+            (String) request.getAttribute("erro");
+
+    if(erro != null){
+%>
+
+<p style="color:red;">
+    <%= erro %>
+</p>
+
+<%
+    }
+%>
+
 <a href="views/cadastro-tanque.jsp">
     Novo Tanque
 </a>
@@ -35,6 +50,7 @@
         <th>pH</th>
         <th>Ocupação Atual</th>
         <th>Espaços Disponíveis</th>
+        <th>Ações</th>
 
     </tr>
 
@@ -57,6 +73,20 @@
     <td><%= t.getOcupacaoAtual() %></td>
 
     <td><%= t.getEspacosDisponiveis() %></td>
+
+    <td>
+
+        <a href="/AquaVidaManager/tanques?acao=editar&id=<%= t.getId() %>">
+            Editar
+        </a>
+
+        |
+
+        <a href="/AquaVidaManager/tanques?acao=excluir&id=<%= t.getId() %>">
+            Excluir
+        </a>
+
+    </td>
 
 </tr>
 
