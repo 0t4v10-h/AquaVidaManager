@@ -37,7 +37,52 @@ public class PeixeController extends HttpServlet {
                 listaTanques
         );
 
-        if("novo".equals(acao)){
+        if("excluir".equals(acao)){
+
+            int id =
+                    Integer.parseInt(
+                            req.getParameter("id")
+                    );
+
+            PeixeDAO dao =
+                    new PeixeDAO();
+
+            dao.excluir(id);
+
+            resp.sendRedirect(
+                    "/AquaVidaManager/peixes"
+            );
+
+        }
+        else if("editar".equals(acao)){
+
+            int id =
+                    Integer.parseInt(
+                            req.getParameter("id")
+                    );
+
+            PeixeDAO peixeDAO =
+                    new PeixeDAO();
+
+            Peixe peixe =
+                    peixeDAO.buscarPorId(id);
+
+            req.setAttribute(
+                    "peixe",
+                    peixe
+            );
+
+            req.setAttribute(
+                    "listaTanques",
+                    tanqueDAO.listar()
+            );
+
+            req.getRequestDispatcher(
+                    "views/editar-peixe.jsp"
+            ).forward(req, resp);
+
+        }
+        else if("novo".equals(acao)){
 
             req.getRequestDispatcher(
                     "views/cadastro-peixe.jsp"
@@ -164,10 +209,25 @@ public class PeixeController extends HttpServlet {
 
         }else{
 
+            String idStr =
+                    req.getParameter("id");
+
             PeixeDAO dao =
                     new PeixeDAO();
 
-            dao.salvar(peixe);
+            if(idStr != null && !idStr.isEmpty()){
+
+                peixe.setId(
+                        Integer.parseInt(idStr)
+                );
+
+                dao.atualizar(peixe);
+
+            }else{
+
+                dao.salvar(peixe);
+
+            }
 
             resp.sendRedirect(
                     "/AquaVidaManager/peixes"

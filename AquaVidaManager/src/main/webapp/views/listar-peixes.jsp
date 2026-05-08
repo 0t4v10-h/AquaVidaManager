@@ -33,6 +33,7 @@
         <th>Espécie</th>
         <th>Quantidade</th>
         <th>Tanque ID</th>
+        <th>Ações</th>
 
     </tr>
 
@@ -51,6 +52,19 @@
     <td><%= p.getQuantidade() %></td>
 
     <td><%= p.getTanqueId() %></td>
+
+    <td>
+        <a href="/AquaVidaManager/peixes?acao=editar&id=<%= p.getId() %>">
+            Editar
+        </a>
+
+        |
+
+        <a href="/AquaVidaManager/peixes?acao=excluir&id=<%= p.getId() %>">
+            Excluir
+        </a>
+
+    </td>
 
 </tr>
 
