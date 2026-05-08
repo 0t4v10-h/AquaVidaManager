@@ -1,79 +1,104 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="br.com.aquavida.model.Peixe" %>
+    <%@ page import="br.com.aquavida.model.Peixe" %>
 
-<%
-    ArrayList<Peixe> lista =
+        <% ArrayList<Peixe> lista =
             (ArrayList<Peixe>) request.getAttribute("listaPeixes");
-%>
+                %>
 
-<html>
+                <html>
 
-<head>
+                <head>
+                    <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+                    <title>Lista de Peixes</title>
 
-    <title>Lista de Peixes</title>
+                </head>
 
-</head>
+                <body>
+                    <div class="navbar">
 
-<body>
+                        <div class="logo">
+                            AquaVidaManager
+                        </div>
 
-<h2>Lista de Peixes</h2>
+                        <div class="menu">
+                            <a href="/AquaVidaManager/peixes">
+                                Peixes
+                            </a>
 
-<a href="/AquaVidaManager/peixes?acao=novo">
-    Novo Peixe
-</a>
+                            <a href="/AquaVidaManager/tanques">
+                                Tanques
+                            </a>
+                        </div>
 
-<br><br>
+                    </div>
+                    <div class="container">
 
-<table border="1">
+                        <h2>Lista de Peixes</h2>
 
-    <tr>
+                        <a href="/AquaVidaManager/peixes?acao=novo">
+                            Novo Peixe
+                        </a>
 
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Espécie</th>
-        <th>Quantidade</th>
-        <th>Tanque ID</th>
-        <th>Ações</th>
+                        <br><br>
 
-    </tr>
+                        <table border="1">
 
-<%
-    for(Peixe p : lista){
-%>
+                            <tr>
 
-<tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Espécie</th>
+                                <th>Quantidade</th>
+                                <th>Tanque ID</th>
+                                <th>Ações</th>
 
-    <td><%= p.getId() %></td>
+                            </tr>
 
-    <td><%= p.getNome() %></td>
+                            <% for(Peixe p : lista){ %>
 
-    <td><%= p.getEspecie() %></td>
+                                <tr>
 
-    <td><%= p.getQuantidade() %></td>
+                                    <td>
+                                        <%= p.getId() %>
+                                    </td>
 
-    <td><%= p.getTanqueId() %></td>
+                                    <td>
+                                        <%= p.getNome() %>
+                                    </td>
 
-    <td>
-        <a href="/AquaVidaManager/peixes?acao=editar&id=<%= p.getId() %>">
-            Editar
-        </a>
+                                    <td>
+                                        <%= p.getEspecie() %>
+                                    </td>
 
-        |
+                                    <td>
+                                        <%= p.getQuantidade() %>
+                                    </td>
 
-        <a href="/AquaVidaManager/peixes?acao=excluir&id=<%= p.getId() %>">
-            Excluir
-        </a>
+                                    <td>
+                                        <%= p.getTanqueId() %>
+                                    </td>
 
-    </td>
+                                    <td>
+                                        <a class="link-btn btn-edit"
+                                            href="/AquaVidaManager/tanques?acao=editar&id=<%= t.getId() %>">
+                                            Editar
+                                        </a>
 
-</tr>
+                                        |
 
-<%
-    }
-%>
+                                        <a class="link-btn btn-delete"
+                                            href="/AquaVidaManager/tanques?acao=excluir&id=<%= t.getId() %>">
+                                            Excluir
+                                        </a>
 
-</table>
+                                    </td>
 
-</body>
+                                </tr>
 
-</html>
+                                <% } %>
+
+                        </table>
+                    </div>
+                </body>
+
+                </html>

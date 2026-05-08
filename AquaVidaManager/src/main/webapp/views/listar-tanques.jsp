@@ -1,101 +1,123 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="br.com.aquavida.model.Tanque" %>
+    <%@ page import="br.com.aquavida.model.Tanque" %>
 
-<%
-    ArrayList<Tanque> lista =
+        <% ArrayList<Tanque> lista =
             (ArrayList<Tanque>) request.getAttribute("listaTanques");
-%>
+                %>
 
-<html>
+                <html>
 
-<head>
+                <head>
+                    <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+                    <title>Lista de Tanques</title>
 
-    <title>Lista de Tanques</title>
+                </head>
 
-</head>
+                <body>
+                    <div class="navbar">
 
-<body>
+                        <div class="logo">
+                            AquaVidaManager
+                        </div>
 
-<h2>Lista de Tanques</h2>
+                        <div class="menu">
+                            <a href="/AquaVidaManager/peixes">
+                                Peixes
+                            </a>
 
-<%
-    String erro =
-            (String) request.getAttribute("erro");
+                            <a href="/AquaVidaManager/tanques">
+                                Tanques
+                            </a>
+                        </div>
 
-    if(erro != null){
-%>
+                    </div>
+                    <div class="container">
 
-<p style="color:red;">
-    <%= erro %>
-</p>
+                        <h2>Lista de Tanques</h2>
 
-<%
-    }
-%>
+                        <% String erro=(String) request.getAttribute("erro"); if(erro !=null){ %>
 
-<a href="views/cadastro-tanque.jsp">
-    Novo Tanque
-</a>
+                            <p style="color:red;">
+                                <%= erro %>
+                            </p>
 
-<br><br>
+                            <% } %>
 
-<table border="1">
+                                <a class="link-btn btn-new" href="/AquaVidaManager/tanques?acao=novo">
+                                    Novo Tanque
+                                </a>
 
-    <tr>
+                                <br><br>
 
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Capacidade</th>
-        <th>Temperatura</th>
-        <th>pH</th>
-        <th>Ocupação Atual</th>
-        <th>Espaços Disponíveis</th>
-        <th>Ações</th>
+                                <table border="1">
 
-    </tr>
+                                    <tr>
 
-<%
-    for(Tanque t : lista){
-%>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>Capacidade</th>
+                                        <th>Temperatura</th>
+                                        <th>pH</th>
+                                        <th>Ocupação Atual</th>
+                                        <th>Espaços Disponíveis</th>
+                                        <th>Ações</th>
 
-<tr>
+                                    </tr>
 
-    <td><%= t.getId() %></td>
+                                    <% for(Tanque t : lista){ %>
 
-    <td><%= t.getNome() %></td>
+                                        <tr>
 
-    <td><%= t.getCapacidade() %></td>
+                                            <td>
+                                                <%= t.getId() %>
+                                            </td>
 
-    <td><%= t.getTemperaturaIdeal() %></td>
+                                            <td>
+                                                <%= t.getNome() %>
+                                            </td>
 
-    <td><%= t.getPhIdeal() %></td>
+                                            <td>
+                                                <%= t.getCapacidade() %>
+                                            </td>
 
-    <td><%= t.getOcupacaoAtual() %></td>
+                                            <td>
+                                                <%= t.getTemperaturaIdeal() %>
+                                            </td>
 
-    <td><%= t.getEspacosDisponiveis() %></td>
+                                            <td>
+                                                <%= t.getPhIdeal() %>
+                                            </td>
 
-    <td>
+                                            <td>
+                                                <%= t.getOcupacaoAtual() %>
+                                            </td>
 
-        <a href="/AquaVidaManager/tanques?acao=editar&id=<%= t.getId() %>">
-            Editar
-        </a>
+                                            <td>
+                                                <%= t.getEspacosDisponiveis() %>
+                                            </td>
 
-        |
+                                            <td>
 
-        <a href="/AquaVidaManager/tanques?acao=excluir&id=<%= t.getId() %>">
-            Excluir
-        </a>
+                                                <a class="link-btn btn-edit"
+                                                    href="/AquaVidaManager/tanques?acao=editar&id=<%= t.getId() %>">
+                                                    Editar
+                                                </a>
 
-    </td>
+                                                |
 
-</tr>
+                                                <a class="link-btn btn-delete"
+                                                    href="/AquaVidaManager/tanques?acao=excluir&id=<%= t.getId() %>">
+                                                    Excluir
+                                                </a>
 
-<%
-    }
-%>
+                                            </td>
 
-</table>
+                                        </tr>
 
-</body>
+                                        <% } %>
 
-</html>
+                                </table>
+                    </div>
+                </body>
+
+                </html>

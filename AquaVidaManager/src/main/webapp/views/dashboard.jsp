@@ -1,17 +1,36 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
+    <html>
 
-<head>
+    <head>
+        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+        <title>Dashboard</title>
 
-    <title>Dashboard</title>
+    </head>
 
-</head>
+    <body>
+        <div class="navbar">
 
-<body>
+            <div class="logo">
+                AquaVidaManager
+            </div>
 
-<h1>Login realizado com sucesso!</h1>
+            <div class="menu">
+                <a href="/AquaVidaManager/peixes">
+                    Peixes
+                </a>
 
-</body>
+                <a href="/AquaVidaManager/tanques">
+                    Tanques
+                </a>
+            </div>
 
-</html>
+        </div>
+
+        <div class="container">
+
+            <h1>Login realizado com sucesso!</h1>
+        </div>
+    </body>
+
+    </html>

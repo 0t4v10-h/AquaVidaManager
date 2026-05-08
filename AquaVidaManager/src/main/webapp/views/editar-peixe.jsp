@@ -1,95 +1,95 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="br.com.aquavida.model.Tanque" %>
-<%@ page import="br.com.aquavida.model.Peixe" %>
+        <%@ page import="br.com.aquavida.model.Tanque" %>
+                <%@ page import="br.com.aquavida.model.Peixe" %>
 
-<%
-    Peixe peixe =
-            (Peixe) request.getAttribute("peixe");
+                        <% Peixe peixe=(Peixe) request.getAttribute("peixe"); ArrayList<Tanque> listaTanques =
+                                (ArrayList<Tanque>) request.getAttribute("listaTanques");
+                                        %>
 
-    ArrayList<Tanque> listaTanques =
-            (ArrayList<Tanque>) request.getAttribute("listaTanques");
-%>
+                                        <html>
 
-<html>
+                                        <head>
+                                                <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+                                                <title>Editar Peixe</title>
 
-<head>
+                                        </head>
 
-    <title>Editar Peixe</title>
+                                        <body>
+                                                <div class="navbar">
 
-</head>
+                                                        <div class="logo">
+                                                                AquaVidaManager
+                                                        </div>
 
-<body>
+                                                        <div class="menu">
+                                                                <a href="/AquaVidaManager/peixes">
+                                                                        Peixes
+                                                                </a>
 
-<h2>Editar Peixe</h2>
+                                                                <a href="/AquaVidaManager/tanques">
+                                                                        Tanques
+                                                                </a>
+                                                        </div>
 
-<form action="/AquaVidaManager/peixes" method="post">
+                                                </div>
 
-    <input
-            type="hidden"
-            name="id"
-            value="<%= peixe.getId() %>"
-    >
+                                                <div class="container">
 
-    <label>Nome:</label>
+                                                        <h2>Editar Peixe</h2>
 
-    <input
-            type="text"
-            name="nome"
-            value="<%= peixe.getNome() %>"
-    >
+                                                        <form action="/AquaVidaManager/peixes" method="post">
 
-    <br><br>
+                                                                <input type="hidden" name="id"
+                                                                        value="<%= peixe.getId() %>">
 
-    <label>Espécie:</label>
+                                                                <label>Nome:</label>
 
-    <input
-            type="text"
-            name="especie"
-            value="<%= peixe.getEspecie() %>"
-    >
+                                                                <input type="text" name="nome"
+                                                                        value="<%= peixe.getNome() %>">
 
-    <br><br>
+                                                                <br><br>
 
-    <label>Quantidade:</label>
+                                                                <label>Espécie:</label>
 
-    <input
-            type="number"
-            name="quantidade"
-            value="<%= peixe.getQuantidade() %>"
-    >
+                                                                <input type="text" name="especie"
+                                                                        value="<%= peixe.getEspecie() %>">
 
-    <br><br>
+                                                                <br><br>
 
-    <label>Tanque:</label>
+                                                                <label>Quantidade:</label>
 
-    <select name="tanque">
+                                                                <input type="number" name="quantidade"
+                                                                        value="<%= peixe.getQuantidade() %>">
 
-        <% for(Tanque t : listaTanques){ %>
+                                                                <br><br>
 
-        <option
-                value="<%= t.getId() %>"
+                                                                <label>Tanque:</label>
 
-                <%= peixe.getTanqueId() == t.getId()
-                        ? "selected"
-                        : "" %>
-        >
+                                                                <select name="tanque">
 
-            <%= t.getNome() %>
+                                                                        <% for(Tanque t : listaTanques){ %>
 
-        </option>
+                                                                                <option value="<%= t.getId() %>"
+                                                                                        <%=peixe.getTanqueId()==t.getId()
+                                                                                        ? "selected" : "" %>
+                                                                                        >
 
-        <% } %>
+                                                                                        <%= t.getNome() %>
 
-    </select>
+                                                                                </option>
 
-    <br><br>
+                                                                                <% } %>
 
-    <button type="submit">
-        Atualizar
-    </button>
+                                                                </select>
 
-</form>
+                                                                <br><br>
 
-</body>
+                                                                <button type="submit">
+                                                                        Atualizar
+                                                                </button>
 
-</html>
+                                                        </form>
+                                                </div>
+                                        </body>
+
+                                        </html>

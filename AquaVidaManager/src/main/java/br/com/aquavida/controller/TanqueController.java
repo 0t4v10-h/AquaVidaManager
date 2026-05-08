@@ -1,16 +1,15 @@
 package br.com.aquavida.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import br.com.aquavida.dao.TanqueDAO;
 import br.com.aquavida.model.Tanque;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 @WebServlet("/tanques")
 public class TanqueController extends HttpServlet {

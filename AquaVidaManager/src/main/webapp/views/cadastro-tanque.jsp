@@ -1,49 +1,67 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
+    <html>
 
-<head>
+    <head>
+        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+        <title>Cadastro de Tanque</title>
 
-    <title>Cadastro de Tanque</title>
+    </head>
 
-</head>
+    <body>
+        <div class="navbar">
 
-<body>
+            <div class="logo">
+                AquaVidaManager
+            </div>
 
-<h2>Cadastrar Tanque</h2>
+            <div class="menu">
+                <a href="/AquaVidaManager/peixes">
+                    Peixes
+                </a>
 
-<form action="../tanques" method="post">
+                <a href="/AquaVidaManager/tanques">
+                    Tanques
+                </a>
+            </div>
 
-    <label>Nome:</label>
+        </div>
 
-    <input type="text" name="nome">
+        <div class="container">
+            <h2>Cadastrar Tanque</h2>
 
-    <br><br>
+            <form action="../tanques" method="post">
 
-    <label>Capacidade:</label>
+                <label>Nome:</label>
 
-    <input type="number" name="capacidade">
+                <input type="text" name="nome">
 
-    <br><br>
+                <br><br>
 
-    <label>Temperatura Ideal:</label>
+                <label>Capacidade:</label>
 
-    <input type="number" step="0.1" name="temperatura">
+                <input type="number" name="capacidade">
 
-    <br><br>
+                <br><br>
 
-    <label>pH Ideal:</label>
+                <label>Temperatura Ideal:</label>
 
-    <input type="number" step="0.1" name="ph">
+                <input type="number" step="0.1" name="temperatura">
 
-    <br><br>
+                <br><br>
 
-    <button type="submit">
-        Salvar
-    </button>
+                <label>pH Ideal:</label>
 
-</form>
+                <input type="number" step="0.1" name="ph">
 
-</body>
+                <br><br>
 
-</html>
+                <button type="submit">
+                    Salvar
+                </button>
+
+            </form>
+        </div>
+    </body>
+
+    </html>

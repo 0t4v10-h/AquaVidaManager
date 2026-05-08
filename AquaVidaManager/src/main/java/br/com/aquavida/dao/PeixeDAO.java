@@ -1,12 +1,12 @@
 package br.com.aquavida.dao;
 
-import br.com.aquavida.model.Peixe;
-import br.com.aquavida.util.ConnectionFactory;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import br.com.aquavida.model.Peixe;
+import br.com.aquavida.util.ConnectionFactory;
 
 public class PeixeDAO {
 

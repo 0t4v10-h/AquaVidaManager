@@ -1,52 +1,64 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
+    <html>
 
-<head>
+    <head>
+        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+        <title>Login</title>
 
-    <title>Login</title>
+    </head>
 
-</head>
+    <body>
+        <div class="navbar">
 
-<body>
+            <div class="logo">
+                AquaVidaManager
+            </div>
 
-<h2>Login do Sistema</h2>
+            <div class="menu">
+                <a href="/AquaVidaManager/peixes">
+                    Peixes
+                </a>
 
-<%
-    String error =
-            (String) request.getAttribute("error");
+                <a href="/AquaVidaManager/tanques">
+                    Tanques
+                </a>
+            </div>
 
-    if(error != null){
-%>
+        </div>
+        <div class="container">
 
-<p style="color:red;">
-    <%= error %>
-</p>
+            <h2>Login do Sistema</h2>
 
-<%
-    }
-%>
+            <% String error=(String) request.getAttribute("error"); if(error !=null){ %>
 
-<form action="/AquaVidaManager/login" method="post">
+                <p style="color:red;">
+                    <%= error %>
+                </p>
 
-    <label>Login:</label>
+                <% } %>
 
-    <input type="text" name="login">
+                    <form action="/AquaVidaManager/login" method="post">
 
-    <br><br>
+                        <label>Login:</label>
 
-    <label>Senha:</label>
+                        <input type="text" name="login">
 
-    <input type="password" name="senha">
+                        <br><br>
 
-    <br><br>
+                        <label>Senha:</label>
 
-    <button type="submit">
-        Entrar
-    </button>
+                        <input type="password" name="senha">
 
-</form>
+                        <br><br>
 
-</body>
+                        <button type="submit">
+                            Entrar
+                        </button>
 
-</html>
+                    </form>
+        </div>
+
+    </body>
+
+    </html>

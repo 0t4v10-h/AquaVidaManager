@@ -1,78 +1,72 @@
 <%@ page import="br.com.aquavida.model.Tanque" %>
 
-<%
-    Tanque tanque =
-            (Tanque) request.getAttribute("tanque");
-%>
+        <% Tanque tanque=(Tanque) request.getAttribute("tanque"); %>
 
-<html>
+                <html>
 
-<head>
+                <head>
+                        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+                        <title>Editar Tanque</title>
 
-    <title>Editar Tanque</title>
+                </head>
 
-</head>
+                <body>
+                        <div class="navbar">
 
-<body>
+                                <div class="logo">
+                                        AquaVidaManager
+                                </div>
 
-<h2>Editar Tanque</h2>
+                                <div class="menu">
+                                        <a href="/AquaVidaManager/peixes">
+                                                Peixes
+                                        </a>
 
-<form action="/AquaVidaManager/tanques" method="post">
+                                        <a href="/AquaVidaManager/tanques">
+                                                Tanques
+                                        </a>
+                                </div>
 
-    <input
-            type="hidden"
-            name="id"
-            value="<%= tanque.getId() %>"
-    >
+                        </div>
+                        <div class="container">
 
-    <label>Nome:</label>
+                                <h2>Editar Tanque</h2>
 
-    <input
-            type="text"
-            name="nome"
-            value="<%= tanque.getNome() %>"
-    >
+                                <form action="/AquaVidaManager/tanques" method="post">
 
-    <br><br>
+                                        <input type="hidden" name="id" value="<%= tanque.getId() %>">
 
-    <label>Capacidade:</label>
+                                        <label>Nome:</label>
 
-    <input
-            type="number"
-            name="capacidade"
-            value="<%= tanque.getCapacidade() %>"
-    >
+                                        <input type="text" name="nome" value="<%= tanque.getNome() %>">
 
-    <br><br>
+                                        <br><br>
 
-    <label>Temperatura:</label>
+                                        <label>Capacidade:</label>
 
-    <input
-            type="number"
-            step="0.1"
-            name="temperatura"
-            value="<%= tanque.getTemperaturaIdeal() %>"
-    >
+                                        <input type="number" name="capacidade" value="<%= tanque.getCapacidade() %>">
 
-    <br><br>
+                                        <br><br>
 
-    <label>pH:</label>
+                                        <label>Temperatura:</label>
 
-    <input
-            type="number"
-            step="0.1"
-            name="ph"
-            value="<%= tanque.getPhIdeal() %>"
-    >
+                                        <input type="number" step="0.1" name="temperatura"
+                                                value="<%= tanque.getTemperaturaIdeal() %>">
 
-    <br><br>
+                                        <br><br>
 
-    <button type="submit">
-        Atualizar
-    </button>
+                                        <label>pH:</label>
 
-</form>
+                                        <input type="number" step="0.1" name="ph" value="<%= tanque.getPhIdeal() %>">
 
-</body>
+                                        <br><br>
 
-</html>
+                                        <button type="submit">
+                                                Atualizar
+                                        </button>
+
+                                </form>
+                        </div>
+                </body>
+
+                </html>
