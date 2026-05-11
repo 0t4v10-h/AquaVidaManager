@@ -50,6 +50,19 @@
 
                         </form>
 
+                        <p style="
+                                    text-align:center;
+                                    margin-top:20px;
+                                ">
+
+                            <a href="/AquaVidaManager/cadastro-usuario">
+
+                                Criar novo usuário
+
+                            </a>
+
+                        </p>
+
             </div>
 
         </div>

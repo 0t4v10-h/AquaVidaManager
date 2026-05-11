@@ -61,4 +61,48 @@ public class UsuarioDAO {
 
     }
 
+    public void salvar(Usuario usuario){
+
+        String sql =
+                "INSERT INTO usuario " +
+                        "(nome, login, senha) " +
+                        "VALUES (?, ?, ?)";
+
+        try {
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            stmt.setString(
+                    1,
+                    usuario.getNome()
+            );
+
+            stmt.setString(
+                    2,
+                    usuario.getLogin()
+            );
+
+            stmt.setString(
+                    3,
+                    usuario.getSenha()
+            );
+
+            stmt.execute();
+
+            stmt.close();
+
+            conexao.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
 }
