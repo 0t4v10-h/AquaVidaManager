@@ -439,3 +439,21 @@ tr:hover {
     background-color: #ef4444;
 
 }
+
+.alert-dashboard {
+
+    background-color: #fef3c7;
+
+    color: #92400e;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    margin-bottom: 25px;
+
+    font-weight: bold;
+
+    border-left: 6px solid #f59e0b;
+
+}

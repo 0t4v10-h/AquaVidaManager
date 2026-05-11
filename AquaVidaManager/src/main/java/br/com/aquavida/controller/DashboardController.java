@@ -1,24 +1,23 @@
 package br.com.aquavida.controller;
 
+import java.io.IOException;
+
 import br.com.aquavida.dao.PeixeDAO;
 import br.com.aquavida.dao.TanqueDAO;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-
 @WebServlet("/dashboard")
 public class DashboardController extends HttpServlet {
 
     @Override
-    protected void doGet(
-            HttpServletRequest req,
-            HttpServletResponse resp
-    ) throws ServletException, IOException {
+        protected void doGet(
+                HttpServletRequest req,
+                HttpServletResponse resp
+        ) throws ServletException, IOException {
 
         PeixeDAO peixeDAO =
                 new PeixeDAO();
@@ -37,6 +36,22 @@ public class DashboardController extends HttpServlet {
 
         int espacosDisponiveis =
                 tanqueDAO.espacosDisponiveis();
+
+        boolean alertaLotacao =
+                false;
+
+        for(var t : tanqueDAO.listar()){
+
+                if(t.getPercentualOcupacao() >= 80){
+
+                alertaLotacao =
+                        true;
+
+                break;
+
+                }
+
+        }
 
         req.setAttribute(
                 "totalPeixes",
@@ -58,10 +73,15 @@ public class DashboardController extends HttpServlet {
                 espacosDisponiveis
         );
 
+        req.setAttribute(
+                "alertaLotacao",
+                alertaLotacao
+        );
+
         req.getRequestDispatcher(
                 "views/dashboard.jsp"
         ).forward(req, resp);
 
-    }
+        }
 
 }
