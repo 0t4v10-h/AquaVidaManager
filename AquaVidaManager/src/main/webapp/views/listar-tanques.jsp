@@ -33,12 +33,12 @@
 
                         <div class="menu">
 
-                            <a href="/AquaVidaManager/peixes">
-                                Peixes
+                            <a href="/AquaVidaManager/dashboard">
+                                Home
                             </a>
 
-                            <a href="/AquaVidaManager/tanques">
-                                Tanques
+                            <a href="/AquaVidaManager/peixes">
+                                Peixes
                             </a>
 
                         </div>

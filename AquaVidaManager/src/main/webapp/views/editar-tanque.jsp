@@ -22,18 +22,6 @@
 
                                 </div>
 
-                                <div class="menu">
-
-                                        <a href="/AquaVidaManager/peixes">
-                                                Peixes
-                                        </a>
-
-                                        <a href="/AquaVidaManager/tanques">
-                                                Tanques
-                                        </a>
-
-                                </div>
-
                         </div>
 
                         <div class="container">

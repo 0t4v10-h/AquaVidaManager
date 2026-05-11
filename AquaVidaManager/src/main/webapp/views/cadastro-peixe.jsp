@@ -31,18 +31,6 @@
 
                         </div>
 
-                        <div class="menu">
-
-                            <a href="/AquaVidaManager/peixes">
-                                Peixes
-                            </a>
-
-                            <a href="/AquaVidaManager/tanques">
-                                Tanques
-                            </a>
-
-                        </div>
-
                     </div>
 
                     <div class="container">
@@ -89,11 +77,21 @@
 
                                     </select>
 
-                                    <button type="submit">
+                                    <div class="form-buttons">
 
-                                        Salvar
+                                        <button type="submit">
 
-                                    </button>
+                                            Salvar
+
+                                        </button>
+
+                                        <a class="link-btn cancel-btn" href="/AquaVidaManager/peixes">
+
+                                            Cancelar
+
+                                        </a>
+
+                                    </div>
 
                                 </form>
 

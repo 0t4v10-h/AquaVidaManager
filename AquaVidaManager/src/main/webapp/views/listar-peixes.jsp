@@ -29,21 +29,15 @@
 
                         <div class="menu">
 
-                            <a href="/AquaVidaManager/peixes">
+                            <a href="/AquaVidaManager/dashboard">
 
-                                Peixes
+                                Home
 
                             </a>
 
                             <a href="/AquaVidaManager/tanques">
 
                                 Tanques
-
-                            </a>
-
-                            <a href="/AquaVidaManager/views/dashboard.jsp">
-
-                                Dashboard
 
                             </a>
 

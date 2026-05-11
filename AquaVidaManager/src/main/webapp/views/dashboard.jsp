@@ -1,6 +1,7 @@
 <%@ page import="br.com.aquavida.model.Usuario" %>
 
-    <% Usuario usuario=(Usuario) session.getAttribute("user"); %>
+    <% Usuario usuario=(Usuario) session.getAttribute("user"); if(usuario==null){
+        response.sendRedirect( "/AquaVidaManager/login" ); return; } %>
 
         <html>
 
@@ -23,10 +24,6 @@
                 </div>
 
                 <div class="menu">
-
-                    <a href="/AquaVidaManager/dashboard">
-                        Dashboard
-                    </a>
 
                     <a href="/AquaVidaManager/peixes">
                         Peixes
