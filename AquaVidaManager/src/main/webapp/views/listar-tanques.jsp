@@ -117,6 +117,46 @@
 
                                             </div>
 
+                                            <div class="progress-container">
+
+                                                <% int percentual=t.getPercentualOcupacao(); String
+                                                    barraClasse="progress-safe" ; String statusClasse="status-safe" ;
+                                                    if(percentual>= 80){
+
+                                                    barraClasse =
+                                                    "progress-danger";
+
+                                                    statusClasse =
+                                                    "status-danger";
+
+                                                    }
+                                                    else if(percentual >= 50){
+
+                                                    barraClasse =
+                                                    "progress-warning";
+
+                                                    statusClasse =
+                                                    "status-warning";
+
+                                                    }
+
+                                                    %>
+
+                                                    <div class="progress-bar <%= barraClasse %>"
+                                                        style="width: <%= percentual %>%">
+
+                                                        <%= percentual %>%
+
+                                                    </div>
+
+                                            </div>
+
+                                            <div class="status-badge <%= statusClasse %>">
+
+                                                <%= t.getStatusLotacao() %>
+
+                                            </div>
+
                                             <div class="card-actions">
 
                                                 <a class="link-btn btn-edit"

@@ -75,4 +75,28 @@ public class Tanque {
         this.espacosDisponiveis = espacosDisponiveis;
     }
 
+    public int getPercentualOcupacao(){
+        if(capacidade == 0){
+            return 0;
+        }
+
+        return
+                (ocupacaoAtual * 100)
+                        / capacidade;
+    }
+
+    public String getStatusLotacao(){
+        int percentual =
+                getPercentualOcupacao();
+
+        if(percentual >= 80){
+            return "Lotação Alta";
+        }
+
+        if(percentual >= 50){
+            return "Atenção";
+        }
+
+        return "Seguro";
+    }
 }
