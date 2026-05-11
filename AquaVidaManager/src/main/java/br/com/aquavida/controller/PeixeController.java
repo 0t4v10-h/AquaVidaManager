@@ -46,7 +46,17 @@ public class PeixeController extends HttpServlet {
             PeixeDAO dao =
                     new PeixeDAO();
 
+            Peixe peixe =
+                    dao.buscarPorId(id);
+
+            int tanqueId =
+                    peixe.getTanqueId();
+
             dao.excluir(id);
+
+            tanqueDAO.atualizarOcupacao(
+                    tanqueId
+            );
 
             resp.sendRedirect(
                     "/AquaVidaManager/peixes"
@@ -183,11 +193,30 @@ public class PeixeController extends HttpServlet {
                         peixe.getTanqueId()
                 );
 
+        String idStr =
+                req.getParameter("id");
+
         int quantidadeNova =
                 peixe.getQuantidade();
 
-        if(quantidadeNova >
-                tanque.getEspacosDisponiveis()){
+        int ocupacaoAtual =
+                tanque.getOcupacaoAtual();
+
+        if(idStr != null && !idStr.isEmpty()){
+
+            Peixe peixeAntigo =
+                    new PeixeDAO().buscarPorId(
+                            Integer.parseInt(idStr)
+                    );
+
+            ocupacaoAtual =
+                    ocupacaoAtual -
+                            peixeAntigo.getQuantidade();
+
+        }
+
+        if(ocupacaoAtual + quantidadeNova >
+                tanque.getCapacidade()){
 
             req.setAttribute(
                     "erro",
@@ -206,33 +235,38 @@ public class PeixeController extends HttpServlet {
                     "views/cadastro-peixe.jsp"
             ).forward(req, resp);
 
+            return;
+
+        }
+
+        PeixeDAO dao =
+                new PeixeDAO();
+
+        if(idStr != null && !idStr.isEmpty()){
+
+            peixe.setId(
+                    Integer.parseInt(idStr)
+            );
+
+            dao.atualizar(peixe);
+
+            tanqueDAO.atualizarOcupacao(
+                    peixe.getTanqueId()
+            );
+
         }else{
 
-            String idStr =
-                    req.getParameter("id");
+            dao.salvar(peixe);
 
-            PeixeDAO dao =
-                    new PeixeDAO();
-
-            if(idStr != null && !idStr.isEmpty()){
-
-                peixe.setId(
-                        Integer.parseInt(idStr)
-                );
-
-                dao.atualizar(peixe);
-
-            }else{
-
-                dao.salvar(peixe);
-
-            }
-
-            resp.sendRedirect(
-                    "/AquaVidaManager/peixes"
+            tanqueDAO.atualizarOcupacao(
+                    peixe.getTanqueId()
             );
 
         }
+
+        resp.sendRedirect(
+                "/AquaVidaManager/peixes"
+        );
 
     }
 

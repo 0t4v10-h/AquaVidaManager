@@ -323,4 +323,133 @@ public class TanqueDAO {
 
     }
 
+    public int totalTanques(){
+
+        String sql =
+                "SELECT COUNT(*) AS total FROM tanque";
+
+        try{
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            ResultSet rs =
+                    stmt.executeQuery();
+
+            if(rs.next()){
+
+                return rs.getInt("total");
+
+            }
+
+        }catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return 0;
+
+    }
+
+    public int ocupacaoTotal(){
+
+        String sql =
+                "SELECT SUM(ocupacao_atual) AS total FROM tanque";
+
+        try{
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            ResultSet rs =
+                    stmt.executeQuery();
+
+            if(rs.next()){
+
+                return rs.getInt("total");
+
+            }
+
+        }catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return 0;
+
+    }
+
+    public void atualizarOcupacao(int tanqueId){
+
+        String sql =
+                "UPDATE tanque " +
+                        "SET ocupacao_atual = (" +
+                        "SELECT COALESCE(SUM(quantidade),0) " +
+                        "FROM peixe " +
+                        "WHERE tanque_id = ?" +
+                        ") " +
+                        "WHERE id = ?";
+
+        try{
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            stmt.setInt(1, tanqueId);
+
+            stmt.setInt(2, tanqueId);
+
+            stmt.execute();
+
+        }catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+    public int espacosDisponiveis(){
+
+        String sql =
+                "SELECT SUM(capacidade - ocupacao_atual) AS total FROM tanque";
+
+        try{
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            ResultSet rs =
+                    stmt.executeQuery();
+
+            if(rs.next()){
+
+                return rs.getInt("total");
+
+            }
+
+        }catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return 0;
+
+    }
+
 }

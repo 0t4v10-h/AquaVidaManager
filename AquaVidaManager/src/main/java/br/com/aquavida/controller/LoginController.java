@@ -1,16 +1,15 @@
 package br.com.aquavida.controller;
 
+import java.io.IOException;
+
 import br.com.aquavida.dao.UsuarioDAO;
 import br.com.aquavida.model.DTO.UserLoginDTO;
 import br.com.aquavida.model.Usuario;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
 
 @WebServlet(value = {"/login", ""})
 public class LoginController extends HttpServlet {
@@ -54,7 +53,7 @@ public class LoginController extends HttpServlet {
             );
 
             resp.sendRedirect(
-                    "/AquaVidaManager/peixes"
+                    "/AquaVidaManager/dashboard"
             );
 
         }

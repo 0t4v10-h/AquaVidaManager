@@ -252,4 +252,36 @@ public class PeixeDAO {
 
     }
 
+    public int totalPeixes(){
+
+        String sql =
+                "SELECT SUM(quantidade) AS total FROM peixe";
+
+        try{
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            ResultSet rs =
+                    stmt.executeQuery();
+
+            if(rs.next()){
+
+                return rs.getInt("total");
+
+            }
+
+        }catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return 0;
+
+    }
+
 }
