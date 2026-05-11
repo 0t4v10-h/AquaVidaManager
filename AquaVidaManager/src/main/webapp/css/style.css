@@ -391,3 +391,128 @@ tr:hover {
     margin-top: 20px;
 
 }
+
+/* DASHBOARD */
+
+.welcome-box {
+
+    background: linear-gradient(135deg,
+            #0ea5e9,
+            #2563eb);
+
+    color: white;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    margin-bottom: 35px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.15);
+
+}
+
+.welcome-box h1 {
+
+    margin: 0;
+
+    font-size: 34px;
+
+}
+
+.welcome-box p {
+
+    margin-top: 10px;
+
+    font-size: 17px;
+
+}
+
+.dashboard-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 25px;
+
+    margin-bottom: 40px;
+
+}
+
+.dashboard-card {
+
+    background-color: white;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.12);
+
+    transition: 0.25s;
+
+}
+
+.dashboard-card:hover {
+
+    transform: translateY(-6px);
+
+}
+
+.dashboard-card h2 {
+
+    margin-top: 0;
+
+    color: #334155;
+
+    font-size: 20px;
+
+}
+
+.dashboard-number {
+
+    font-size: 42px;
+
+    font-weight: bold;
+
+    margin-top: 20px;
+
+    color: #0f172a;
+
+}
+
+.quick-actions {
+
+    display: flex;
+
+    gap: 20px;
+
+}
+
+.quick-btn {
+
+    text-decoration: none;
+
+    background-color: #0ea5e9;
+
+    color: white;
+
+    padding: 14px 22px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    transition: 0.25s;
+
+}
+
+.quick-btn:hover {
+
+    background-color: #0284c7;
+
+}

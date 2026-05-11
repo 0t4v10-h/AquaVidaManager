@@ -1,36 +1,134 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="br.com.aquavida.model.Usuario" %>
 
-    <html>
+    <% Usuario usuario=(Usuario) session.getAttribute("user"); %>
 
-    <head>
-        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
-        <title>Dashboard</title>
+        <html>
 
-    </head>
+        <head>
 
-    <body>
-        <div class="navbar">
+            <title>Dashboard</title>
 
-            <div class="logo">
-                AquaVidaManager
+            <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+
+        </head>
+
+        <body>
+
+            <div class="navbar">
+
+                <div class="logo">
+
+                    AquaVidaManager
+
+                </div>
+
+                <div class="menu">
+
+                    <a href="/AquaVidaManager/dashboard">
+                        Dashboard
+                    </a>
+
+                    <a href="/AquaVidaManager/peixes">
+                        Peixes
+                    </a>
+
+                    <a href="/AquaVidaManager/tanques">
+                        Tanques
+                    </a>
+
+                </div>
+
             </div>
 
-            <div class="menu">
-                <a href="/AquaVidaManager/peixes">
-                    Peixes
-                </a>
+            <div class="container">
 
-                <a href="/AquaVidaManager/tanques">
-                    Tanques
-                </a>
+                <div class="welcome-box">
+
+                    <h1>
+
+                        Bem-vindo,
+                        <%= usuario.getNome() %>
+
+                    </h1>
+
+                    <p>
+
+                        Gerencie seus tanques e monitore a ocupação em tempo real.
+
+                    </p>
+
+                </div>
+
+                <div class="dashboard-grid">
+
+                    <div class="dashboard-card">
+
+                        <h2>Total de Peixes</h2>
+
+                        <div class="dashboard-number">
+
+                            <%= request.getAttribute("totalPeixes") %>
+
+                        </div>
+
+                    </div>
+
+                    <div class="dashboard-card">
+
+                        <h2>Total de Tanques</h2>
+
+                        <div class="dashboard-number">
+
+                            <%= request.getAttribute("totalTanques") %>
+
+                        </div>
+
+                    </div>
+
+                    <div class="dashboard-card">
+
+                        <h2>Ocupação Atual</h2>
+
+                        <div class="dashboard-number">
+
+                            <%= request.getAttribute("ocupacaoTotal") %>
+
+                        </div>
+
+                    </div>
+
+                    <div class="dashboard-card">
+
+                        <h2>Espaços Disponíveis</h2>
+
+                        <div class="dashboard-number">
+
+                            <%= request.getAttribute("espacosDisponiveis") %>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="quick-actions">
+
+                    <a class="quick-btn" href="/AquaVidaManager/peixes?acao=novo">
+
+                        Novo Peixe
+
+                    </a>
+
+                    <a class="quick-btn" href="/AquaVidaManager/tanques?acao=novo">
+
+                        Novo Tanque
+
+                    </a>
+
+                </div>
+
             </div>
 
-        </div>
+        </body>
 
-        <div class="container">
-
-            <h1>Login realizado com sucesso!</h1>
-        </div>
-    </body>
-
-    </html>
+        </html>
