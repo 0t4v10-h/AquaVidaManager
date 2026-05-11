@@ -51,7 +51,10 @@ public class PeixeDAO {
                 new ArrayList<>();
 
         String sql =
-                "SELECT * FROM peixe";
+                "SELECT p.*, t.nome AS nome_tanque\r\n" +
+                        "FROM peixe p\r\n" +
+                        "INNER JOIN tanque t\r\n" +
+                        "ON p.tanque_id = t.id";
 
         try {
 
@@ -87,6 +90,10 @@ public class PeixeDAO {
 
                 peixe.setTanqueId(
                         rs.getInt("tanque_id")
+                );
+
+                peixe.setNomeTanque(
+                        rs.getString("nome_tanque")
                 );
 
                 lista.add(peixe);

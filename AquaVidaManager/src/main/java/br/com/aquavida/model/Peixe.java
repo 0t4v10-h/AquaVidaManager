@@ -12,6 +12,8 @@ public class Peixe {
 
     private int tanqueId;
 
+    private String nomeTanque;
+
     public Peixe() {
     }
 
@@ -53,6 +55,14 @@ public class Peixe {
 
     public void setTanqueId(int tanqueId) {
         this.tanqueId = tanqueId;
+    }
+
+    public String getNomeTanque() {
+        return nomeTanque;
+    }
+
+    public void setNomeTanque(String nomeTanque) {
+        this.nomeTanque = nomeTanque;
     }
 
 }

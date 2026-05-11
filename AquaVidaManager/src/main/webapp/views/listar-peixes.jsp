@@ -95,7 +95,7 @@
                                     </td>
 
                                     <td>
-                                        <%= p.getTanqueId() %>
+                                        <%= p.getNomeTanque() %>
                                     </td>
 
                                     <td>
