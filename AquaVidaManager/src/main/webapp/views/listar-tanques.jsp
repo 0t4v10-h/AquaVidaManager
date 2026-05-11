@@ -2,25 +2,37 @@
     <%@ page import="br.com.aquavida.model.Tanque" %>
 
         <% ArrayList<Tanque> lista =
-            (ArrayList<Tanque>) request.getAttribute("listaTanques");
+            (ArrayList<Tanque>)
+                request.getAttribute("listaTanques");
+
+                String erro =
+                (String)
+                request.getAttribute("erro");
+
                 %>
 
                 <html>
 
                 <head>
+
+                    <title>Tanques</title>
+
                     <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
-                    <title>Lista de Tanques</title>
 
                 </head>
 
                 <body>
+
                     <div class="navbar">
 
                         <div class="logo">
+
                             AquaVidaManager
+
                         </div>
 
                         <div class="menu">
+
                             <a href="/AquaVidaManager/peixes">
                                 Peixes
                             </a>
@@ -28,96 +40,109 @@
                             <a href="/AquaVidaManager/tanques">
                                 Tanques
                             </a>
+
                         </div>
 
                     </div>
+
                     <div class="container">
 
-                        <h2>Lista de Tanques</h2>
+                        <h1>Gerenciamento de Tanques</h1>
 
-                        <% String erro=(String) request.getAttribute("erro"); if(erro !=null){ %>
+                        <a class="link-btn btn-new" href="/AquaVidaManager/views/cadastro-tanque.jsp">
 
-                            <p style="color:red;">
+                            Novo Tanque
+
+                        </a>
+
+                        <% if(erro !=null){ %>
+
+                            <div class="alert">
+
                                 <%= erro %>
-                            </p>
+
+                            </div>
 
                             <% } %>
 
-                                <a class="link-btn btn-new" href="/AquaVidaManager/tanques?acao=novo">
-                                    Novo Tanque
-                                </a>
-
-                                <br><br>
-
-                                <table border="1">
-
-                                    <tr>
-
-                                        <th>ID</th>
-                                        <th>Nome</th>
-                                        <th>Capacidade</th>
-                                        <th>Temperatura</th>
-                                        <th>pH</th>
-                                        <th>Ocupação Atual</th>
-                                        <th>Espaços Disponíveis</th>
-                                        <th>Ações</th>
-
-                                    </tr>
+                                <div class="cards-container">
 
                                     <% for(Tanque t : lista){ %>
 
-                                        <tr>
+                                        <div class="card">
 
-                                            <td>
-                                                <%= t.getId() %>
-                                            </td>
+                                            <h2>
 
-                                            <td>
                                                 <%= t.getNome() %>
-                                            </td>
 
-                                            <td>
+                                            </h2>
+
+                                            <div class="card-info">
+
+                                                <strong>Capacidade:</strong>
+
                                                 <%= t.getCapacidade() %>
-                                            </td>
 
-                                            <td>
-                                                <%= t.getTemperaturaIdeal() %>
-                                            </td>
+                                            </div>
 
-                                            <td>
-                                                <%= t.getPhIdeal() %>
-                                            </td>
+                                            <div class="card-info">
 
-                                            <td>
+                                                <strong>Ocupação:</strong>
+
                                                 <%= t.getOcupacaoAtual() %>
-                                            </td>
 
-                                            <td>
+                                            </div>
+
+                                            <div class="card-info">
+
+                                                <strong>Disponível:</strong>
+
                                                 <%= t.getEspacosDisponiveis() %>
-                                            </td>
 
-                                            <td>
+                                            </div>
+
+                                            <div class="card-info">
+
+                                                <strong>Temperatura:</strong>
+
+                                                <%= t.getTemperaturaIdeal() %> °C
+
+                                            </div>
+
+                                            <div class="card-info">
+
+                                                <strong>pH:</strong>
+
+                                                <%= t.getPhIdeal() %>
+
+                                            </div>
+
+                                            <div class="card-actions">
 
                                                 <a class="link-btn btn-edit"
                                                     href="/AquaVidaManager/tanques?acao=editar&id=<%= t.getId() %>">
-                                                    Editar
-                                                </a>
 
-                                                |
+                                                    Editar
+
+                                                </a>
 
                                                 <a class="link-btn btn-delete"
                                                     href="/AquaVidaManager/tanques?acao=excluir&id=<%= t.getId() %>">
+
                                                     Excluir
+
                                                 </a>
 
-                                            </td>
+                                            </div>
 
-                                        </tr>
+                                        </div>
 
                                         <% } %>
 
-                                </table>
+                                </div>
+
                     </div>
+
                 </body>
 
                 </html>

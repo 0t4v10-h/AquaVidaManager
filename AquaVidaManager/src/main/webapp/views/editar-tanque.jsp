@@ -5,19 +5,25 @@
                 <html>
 
                 <head>
-                        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+
                         <title>Editar Tanque</title>
+
+                        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
 
                 </head>
 
                 <body>
+
                         <div class="navbar">
 
                                 <div class="logo">
+
                                         AquaVidaManager
+
                                 </div>
 
                                 <div class="menu">
+
                                         <a href="/AquaVidaManager/peixes">
                                                 Peixes
                                         </a>
@@ -25,48 +31,56 @@
                                         <a href="/AquaVidaManager/tanques">
                                                 Tanques
                                         </a>
+
                                 </div>
 
                         </div>
+
                         <div class="container">
 
-                                <h2>Editar Tanque</h2>
+                                <h1>Editar Tanque</h1>
 
                                 <form action="/AquaVidaManager/tanques" method="post">
 
                                         <input type="hidden" name="id" value="<%= tanque.getId() %>">
 
-                                        <label>Nome:</label>
+                                        <label>Nome</label>
 
                                         <input type="text" name="nome" value="<%= tanque.getNome() %>">
 
-                                        <br><br>
-
-                                        <label>Capacidade:</label>
+                                        <label>Capacidade</label>
 
                                         <input type="number" name="capacidade" value="<%= tanque.getCapacidade() %>">
 
-                                        <br><br>
-
-                                        <label>Temperatura:</label>
+                                        <label>Temperatura Ideal</label>
 
                                         <input type="number" step="0.1" name="temperatura"
                                                 value="<%= tanque.getTemperaturaIdeal() %>">
 
-                                        <br><br>
-
-                                        <label>pH:</label>
+                                        <label>pH Ideal</label>
 
                                         <input type="number" step="0.1" name="ph" value="<%= tanque.getPhIdeal() %>">
 
-                                        <br><br>
+                                        <div class="form-buttons">
 
-                                        <button type="submit">
-                                                Atualizar
-                                        </button>
+                                                <button type="submit">
+
+                                                        Atualizar
+
+                                                </button>
+
+                                                <a class="link-btn btn-cancel" href="/AquaVidaManager/tanques">
+
+                                                        Cancelar
+
+                                                </a>
+
+                                        </div>
 
                                 </form>
+
                         </div>
+
                 </body>
 
                 </html>

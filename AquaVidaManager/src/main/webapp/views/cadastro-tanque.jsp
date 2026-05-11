@@ -3,19 +3,25 @@
     <html>
 
     <head>
+
+        <title>Novo Tanque</title>
+
         <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
-        <title>Cadastro de Tanque</title>
 
     </head>
 
     <body>
+
         <div class="navbar">
 
             <div class="logo">
+
                 AquaVidaManager
+
             </div>
 
             <div class="menu">
+
                 <a href="/AquaVidaManager/peixes">
                     Peixes
                 </a>
@@ -23,45 +29,53 @@
                 <a href="/AquaVidaManager/tanques">
                     Tanques
                 </a>
+
             </div>
 
         </div>
 
         <div class="container">
-            <h2>Cadastrar Tanque</h2>
 
-            <form action="../tanques" method="post">
+            <h1>Cadastrar Tanque</h1>
 
-                <label>Nome:</label>
+            <% String erro=(String) request.getAttribute("erro"); if(erro !=null){ %>
 
-                <input type="text" name="nome">
+                <div class="alert">
 
-                <br><br>
+                    <%= erro %>
 
-                <label>Capacidade:</label>
+                </div>
 
-                <input type="number" name="capacidade">
+                <% } %>
 
-                <br><br>
+                    <form action="/AquaVidaManager/tanques" method="post">
 
-                <label>Temperatura Ideal:</label>
+                        <label>Nome</label>
 
-                <input type="number" step="0.1" name="temperatura">
+                        <input type="text" name="nome">
 
-                <br><br>
+                        <label>Capacidade</label>
 
-                <label>pH Ideal:</label>
+                        <input type="number" name="capacidade">
 
-                <input type="number" step="0.1" name="ph">
+                        <label>Temperatura Ideal</label>
 
-                <br><br>
+                        <input type="number" step="0.1" name="temperatura">
 
-                <button type="submit">
-                    Salvar
-                </button>
+                        <label>pH Ideal</label>
 
-            </form>
+                        <input type="number" step="0.1" name="ph">
+
+                        <button type="submit">
+
+                            Salvar
+
+                        </button>
+
+                    </form>
+
         </div>
+
     </body>
 
     </html>

@@ -2,46 +2,66 @@
     <%@ page import="br.com.aquavida.model.Peixe" %>
 
         <% ArrayList<Peixe> lista =
-            (ArrayList<Peixe>) request.getAttribute("listaPeixes");
+            (ArrayList<Peixe>)
+                request.getAttribute("listaPeixes");
+
                 %>
 
                 <html>
 
                 <head>
+
+                    <title>Peixes</title>
+
                     <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
-                    <title>Lista de Peixes</title>
 
                 </head>
 
                 <body>
+
                     <div class="navbar">
 
                         <div class="logo">
+
                             AquaVidaManager
+
                         </div>
 
                         <div class="menu">
+
                             <a href="/AquaVidaManager/peixes">
+
                                 Peixes
+
                             </a>
 
                             <a href="/AquaVidaManager/tanques">
+
                                 Tanques
+
                             </a>
+
+                            <a href="/AquaVidaManager/views/dashboard.jsp">
+
+                                Dashboard
+
+                            </a>
+
                         </div>
 
                     </div>
+
                     <div class="container">
 
-                        <h2>Lista de Peixes</h2>
+                        <h1>Gerenciamento de Peixes</h1>
 
-                        <a href="/AquaVidaManager/peixes?acao=novo">
+                        <a class="link-btn btn-new" href="/AquaVidaManager/peixes?acao=novo">
+
                             Novo Peixe
+
                         </a>
 
-                        <br><br>
-
-                        <table border="1">
+                        <table>
 
                             <tr>
 
@@ -49,7 +69,7 @@
                                 <th>Nome</th>
                                 <th>Espécie</th>
                                 <th>Quantidade</th>
-                                <th>Tanque ID</th>
+                                <th>Tanque</th>
                                 <th>Ações</th>
 
                             </tr>
@@ -79,16 +99,19 @@
                                     </td>
 
                                     <td>
+
                                         <a class="link-btn btn-edit"
                                             href="/AquaVidaManager/peixes?acao=editar&id=<%= p.getId() %>">
-                                            Editar
-                                        </a>
 
-                                        |
+                                            Editar
+
+                                        </a>
 
                                         <a class="link-btn btn-delete"
                                             href="/AquaVidaManager/peixes?acao=excluir&id=<%= p.getId() %>">
+
                                             Excluir
+
                                         </a>
 
                                     </td>
@@ -98,7 +121,9 @@
                                 <% } %>
 
                         </table>
+
                     </div>
+
                 </body>
 
                 </html>

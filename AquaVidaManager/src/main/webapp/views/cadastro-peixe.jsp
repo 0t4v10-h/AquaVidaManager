@@ -1,15 +1,23 @@
 <%@ page import="java.util.ArrayList" %>
     <%@ page import="br.com.aquavida.model.Tanque" %>
 
-        <% ArrayList<Tanque> lista =
-            (ArrayList<Tanque>) request.getAttribute("listaTanques");
+        <% ArrayList<Tanque> listaTanques =
+            (ArrayList<Tanque>)
+                request.getAttribute("listaTanques");
+
+                String erro =
+                (String)
+                request.getAttribute("erro");
+
                 %>
 
                 <html>
 
                 <head>
+
+                    <title>Novo Peixe</title>
+
                     <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
-                    <title>Cadastro de Peixe</title>
 
                 </head>
 
@@ -18,10 +26,13 @@
                     <div class="navbar">
 
                         <div class="logo">
+
                             AquaVidaManager
+
                         </div>
 
                         <div class="menu">
+
                             <a href="/AquaVidaManager/peixes">
                                 Peixes
                             </a>
@@ -29,64 +40,65 @@
                             <a href="/AquaVidaManager/tanques">
                                 Tanques
                             </a>
+
                         </div>
 
                     </div>
 
                     <div class="container">
 
-                        <h2>Cadastrar Peixe</h2>
+                        <h1>Cadastrar Peixe</h1>
 
-                        <% String erro=(String) request.getAttribute("erro"); if(erro !=null){ %>
+                        <% if(erro !=null){ %>
 
-                            <p style="color:red;">
+                            <div class="alert">
+
                                 <%= erro %>
-                            </p>
+
+                            </div>
 
                             <% } %>
 
                                 <form action="/AquaVidaManager/peixes" method="post">
 
-                                    <label>Nome:</label>
+                                    <label>Nome</label>
 
                                     <input type="text" name="nome">
 
-                                    <br><br>
-
-                                    <label>Espécie:</label>
+                                    <label>Espécie</label>
 
                                     <input type="text" name="especie">
 
-                                    <br><br>
-
-                                    <label>Quantidade:</label>
+                                    <label>Quantidade</label>
 
                                     <input type="number" name="quantidade">
 
-                                    <br><br>
-
-                                    <label>Tanque:</label>
+                                    <label>Tanque</label>
 
                                     <select name="tanque">
 
-                                        <% for(Tanque t : lista){ %>
+                                        <% for(Tanque t : listaTanques){ %>
 
                                             <option value="<%= t.getId() %>">
+
                                                 <%= t.getNome() %>
+
                                             </option>
 
                                             <% } %>
 
                                     </select>
 
-                                    <br><br>
-
                                     <button type="submit">
+
                                         Salvar
+
                                     </button>
 
                                 </form>
+
                     </div>
+
                 </body>
 
                 </html>

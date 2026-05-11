@@ -101,28 +101,58 @@ public class TanqueController extends HttpServlet {
             HttpServletResponse resp
     ) throws ServletException, IOException {
 
+        String nome =
+                req.getParameter("nome");
+
+        String capacidadeStr =
+                req.getParameter("capacidade");
+
+        String temperaturaStr =
+                req.getParameter("temperatura");
+
+        String phStr =
+                req.getParameter("ph");
+
+        if(nome == null || nome.isEmpty() ||
+                capacidadeStr == null || capacidadeStr.isEmpty() ||
+                temperaturaStr == null || temperaturaStr.isEmpty() ||
+                phStr == null || phStr.isEmpty()){
+
+            req.setAttribute(
+                    "erro",
+                    "Preencha todos os campos!"
+            );
+
+            req.getRequestDispatcher(
+                    "views/cadastro-tanque.jsp"
+            ).forward(req, resp);
+
+            return;
+
+        }
+
         Tanque tanque =
                 new Tanque();
 
         tanque.setNome(
-                req.getParameter("nome")
+                nome
         );
 
         tanque.setCapacidade(
                 Integer.parseInt(
-                        req.getParameter("capacidade")
+                        capacidadeStr
                 )
         );
 
         tanque.setTemperaturaIdeal(
                 Double.parseDouble(
-                        req.getParameter("temperatura")
+                        temperaturaStr
                 )
         );
 
         tanque.setPhIdeal(
                 Double.parseDouble(
-                        req.getParameter("ph")
+                        phStr
                 )
         );
 

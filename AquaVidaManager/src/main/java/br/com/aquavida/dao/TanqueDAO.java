@@ -164,6 +164,14 @@ public class TanqueDAO {
                         rs.getString("nome")
                 );
 
+                tanque.setTemperaturaIdeal(
+                        rs.getDouble("temperatura_ideal")
+                );
+
+                tanque.setPhIdeal(
+                        rs.getDouble("ph_ideal")
+                );
+
                 tanque.setCapacidade(
                         rs.getInt("capacidade")
                 );
