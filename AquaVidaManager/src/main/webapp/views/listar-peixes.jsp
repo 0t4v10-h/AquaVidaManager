@@ -80,14 +80,14 @@
 
                                     <td>
                                         <a class="link-btn btn-edit"
-                                            href="/AquaVidaManager/tanques?acao=editar&id=<%= t.getId() %>">
+                                            href="/AquaVidaManager/peixes?acao=editar&id=<%= p.getId() %>">
                                             Editar
                                         </a>
 
                                         |
 
                                         <a class="link-btn btn-delete"
-                                            href="/AquaVidaManager/tanques?acao=excluir&id=<%= t.getId() %>">
+                                            href="/AquaVidaManager/peixes?acao=excluir&id=<%= p.getId() %>">
                                             Excluir
                                         </a>
 

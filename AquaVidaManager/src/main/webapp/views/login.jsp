@@ -1,62 +1,57 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% String erro=(String) request.getAttribute("erro"); %>
 
     <html>
 
     <head>
+
+        <title>AquaVidaManager</title>
+
         <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
-        <title>Login</title>
 
     </head>
 
-    <body>
-        <div class="navbar">
+    <body class="login-body">
 
-            <div class="logo">
-                AquaVidaManager
-            </div>
+        <div class="login-container">
 
-            <div class="menu">
-                <a href="/AquaVidaManager/peixes">
-                    Peixes
-                </a>
+            <div class="login-card">
 
-                <a href="/AquaVidaManager/tanques">
-                    Tanques
-                </a>
-            </div>
+                <h1>AquaVidaManager</h1>
 
-        </div>
-        <div class="container">
-
-            <h2>Login do Sistema</h2>
-
-            <% String error=(String) request.getAttribute("error"); if(error !=null){ %>
-
-                <p style="color:red;">
-                    <%= error %>
+                <p class="subtitle">
+                    Controle inteligente de tanques e peixes
                 </p>
 
-                <% } %>
+                <% if(erro !=null){ %>
 
-                    <form action="/AquaVidaManager/login" method="post">
+                    <div class="alert">
 
-                        <label>Login:</label>
+                        <%= erro %>
 
-                        <input type="text" name="login">
+                    </div>
 
-                        <br><br>
+                    <% } %>
 
-                        <label>Senha:</label>
+                        <form action="/AquaVidaManager/login" method="post">
 
-                        <input type="password" name="senha">
+                            <label>Usuário</label>
 
-                        <br><br>
+                            <input type="text" name="login" placeholder="Digite seu usuário">
 
-                        <button type="submit">
-                            Entrar
-                        </button>
+                            <label>Senha</label>
 
-                    </form>
+                            <input type="password" name="senha" placeholder="Digite sua senha">
+
+                            <button type="submit">
+
+                                Entrar
+
+                            </button>
+
+                        </form>
+
+            </div>
+
         </div>
 
     </body>
