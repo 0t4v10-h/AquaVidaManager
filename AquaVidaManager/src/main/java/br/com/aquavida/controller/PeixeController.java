@@ -167,6 +167,11 @@ public class PeixeController extends HttpServlet {
 
         String quantidadeStr =
                 req.getParameter("quantidade");
+        String pesoStr =
+                req.getParameter("pesoMedio");
+
+        String precoStr =
+                req.getParameter("precoKg");
 
         String tanqueStr =
                 req.getParameter("tanque");
@@ -174,7 +179,7 @@ public class PeixeController extends HttpServlet {
         if(nome == null || nome.isEmpty() ||
                 especie == null || especie.isEmpty() ||
                 quantidadeStr == null || quantidadeStr.isEmpty() ||
-                tanqueStr == null || tanqueStr.isEmpty()){
+                tanqueStr == null || tanqueStr.isEmpty() || pesoStr.isEmpty() || precoStr.isEmpty()){
 
             req.setAttribute(
                     "erro",
@@ -212,6 +217,14 @@ public class PeixeController extends HttpServlet {
                 Integer.parseInt(
                         quantidadeStr
                 )
+        );
+
+        peixe.setPesoMedio(
+                Double.parseDouble(pesoStr)
+        );
+
+        peixe.setPrecoKg(
+                Double.parseDouble(precoStr)
         );
 
         peixe.setTanqueId(

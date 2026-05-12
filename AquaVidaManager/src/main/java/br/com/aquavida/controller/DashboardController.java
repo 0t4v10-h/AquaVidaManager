@@ -40,6 +40,9 @@ public class DashboardController extends HttpServlet {
         boolean alertaLotacao =
                 false;
 
+        double valorTotal =
+                peixeDAO.valorTotalEstoque();
+
         for(var t : tanqueDAO.listar()){
 
                 if(t.getPercentualOcupacao() >= 80){
@@ -76,6 +79,11 @@ public class DashboardController extends HttpServlet {
         req.setAttribute(
                 "alertaLotacao",
                 alertaLotacao
+        );
+
+        req.setAttribute(
+                "valorTotal",
+                valorTotal
         );
 
         req.getRequestDispatcher(

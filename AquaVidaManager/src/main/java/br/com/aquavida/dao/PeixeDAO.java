@@ -13,7 +13,7 @@ public class PeixeDAO {
     public void salvar(Peixe peixe){
 
         String sql =
-                "INSERT INTO peixe(nome, especie, quantidade, tanque_id) VALUES (?, ?, ?, ?)";
+                "INSERT INTO peixe(nome, especie, quantidade, tanque_id, peso_medio, preco_kg) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
 
@@ -30,6 +30,10 @@ public class PeixeDAO {
             stmt.setInt(3, peixe.getQuantidade());
 
             stmt.setInt(4, peixe.getTanqueId());
+
+            stmt.setDouble(5, peixe.getPesoMedio());
+
+            stmt.setDouble(6, peixe.getPrecoKg());
 
             stmt.execute();
 
@@ -96,6 +100,14 @@ public class PeixeDAO {
                         rs.getString("nome_tanque")
                 );
 
+                peixe.setPesoMedio(
+                        rs.getDouble("peso_medio")
+                );
+
+                peixe.setPrecoKg(
+                        rs.getDouble("preco_kg")
+                );
+
                 lista.add(peixe);
 
             }
@@ -159,6 +171,14 @@ public class PeixeDAO {
                         rs.getInt("tanque_id")
                 );
 
+                peixe.setPesoMedio(
+                        rs.getDouble("peso_medio")
+                );
+
+                peixe.setPrecoKg(
+                        rs.getDouble("preco_kg")
+                );
+
                 return peixe;
 
             }
@@ -180,7 +200,9 @@ public class PeixeDAO {
                         "nome = ?, " +
                         "especie = ?, " +
                         "quantidade = ?, " +
-                        "tanque_id = ? " +
+                        "tanque_id = ?, " +
+                        "peso_medio = ?, " +
+                        "preco_kg = ? " +
                         "WHERE id = ?";
 
         try {
@@ -191,30 +213,19 @@ public class PeixeDAO {
             PreparedStatement stmt =
                     conexao.prepareStatement(sql);
 
-            stmt.setString(
-                    1,
-                    peixe.getNome()
-            );
+            stmt.setString(1, peixe.getNome());
 
-            stmt.setString(
-                    2,
-                    peixe.getEspecie()
-            );
+            stmt.setString(2, peixe.getEspecie());
 
-            stmt.setInt(
-                    3,
-                    peixe.getQuantidade()
-            );
+            stmt.setInt(3, peixe.getQuantidade());
 
-            stmt.setInt(
-                    4,
-                    peixe.getTanqueId()
-            );
+            stmt.setInt(4, peixe.getTanqueId());
 
-            stmt.setInt(
-                    5,
-                    peixe.getId()
-            );
+            stmt.setDouble(5, peixe.getPesoMedio());
+
+            stmt.setDouble(6, peixe.getPrecoKg());
+
+            stmt.setInt(7, peixe.getId());
 
             stmt.execute();
 
@@ -286,9 +297,45 @@ public class PeixeDAO {
             e.printStackTrace();
 
         }
-
         return 0;
+    }
 
+    public double valorTotalEstoque(){
+
+        String sql =
+                """
+                SELECT
+                SUM(
+                        quantidade
+                        * peso_medio
+                        * preco_kg
+                ) AS total
+                FROM peixe
+                """;
+
+        try{
+
+                Connection conexao =
+                        ConnectionFactory.getConnection();
+
+                PreparedStatement stmt =
+                        conexao.prepareStatement(sql);
+
+                ResultSet rs =
+                        stmt.executeQuery();
+
+                if(rs.next()){
+
+                return rs.getDouble("total");
+
+                }
+
+        }catch(Exception e){
+
+                e.printStackTrace();
+
+        }
+        return 0;
     }
 
 }

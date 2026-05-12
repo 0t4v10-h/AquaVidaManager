@@ -40,22 +40,26 @@
                                                                         value="<%= peixe.getId() %>">
 
                                                                 <label>Nome</label>
-
                                                                 <input type="text" name="nome"
                                                                         value="<%= peixe.getNome() %>">
 
                                                                 <label>Espécie</label>
-
                                                                 <input type="text" name="especie"
                                                                         value="<%= peixe.getEspecie() %>">
 
                                                                 <label>Quantidade</label>
-
                                                                 <input type="number" name="quantidade"
                                                                         value="<%= peixe.getQuantidade() %>">
 
-                                                                <label>Tanque</label>
+                                                                <label>Peso Médio (kg)</label>
+                                                                <input type="number" step="0.01" name="pesoMedio"
+                                                                        value="<%= peixe.getPesoMedio() %>" required>
 
+                                                                <label>Preço por Kg</label>
+                                                                <input type="number" step="0.01" name="precoKg"
+                                                                        value="<%= peixe.getPrecoKg() %>" required>
+
+                                                                <label>Tanque</label>
                                                                 <select name="tanque">
 
                                                                         <% for(Tanque t : listaTanques){ %>

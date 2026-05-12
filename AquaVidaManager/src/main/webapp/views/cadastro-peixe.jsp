@@ -50,29 +50,27 @@
                                 <form action="/AquaVidaManager/peixes" method="post">
 
                                     <label>Nome</label>
-
                                     <input type="text" name="nome">
 
                                     <label>Espécie</label>
-
                                     <input type="text" name="especie">
 
                                     <label>Quantidade</label>
-
                                     <input type="number" name="quantidade">
 
-                                    <label>Tanque</label>
+                                    <label>Peso Médio (kg)</label>
+                                    <input type="number" step="0.01" name="pesoMedio" required>
 
+                                    <label>Preço por Kg</label>
+                                    <input type="number" step="0.01" name="precoKg" required>
+
+                                    <label>Tanque</label>
                                     <select name="tanque">
 
                                         <% for(Tanque t : listaTanques){ %>
-
                                             <option value="<%= t.getId() %>">
-
                                                 <%= t.getNome() %>
-
                                             </option>
-
                                             <% } %>
 
                                     </select>
@@ -80,15 +78,11 @@
                                     <div class="form-buttons">
 
                                         <button type="submit">
-
                                             Salvar
-
                                         </button>
 
                                         <a class="link-btn cancel-btn" href="/AquaVidaManager/peixes">
-
                                             Cancelar
-
                                         </a>
 
                                     </div>

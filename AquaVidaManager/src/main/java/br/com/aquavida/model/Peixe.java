@@ -14,6 +14,10 @@ public class Peixe {
 
     private String nomeTanque;
 
+    private double pesoMedio;
+
+    private double precoKg;
+
     public Peixe() {
     }
 
@@ -63,6 +67,22 @@ public class Peixe {
 
     public void setNomeTanque(String nomeTanque) {
         this.nomeTanque = nomeTanque;
+    }
+
+    public double getPrecoKg() {
+        return precoKg;
+    }
+
+    public void setPrecoKg(double precoKg) {
+        this.precoKg = precoKg;
+    }
+
+    public double getPesoMedio() {
+        return pesoMedio;
+    }
+
+    public void setPesoMedio(double pesoMedio) {
+        this.pesoMedio = pesoMedio;
     }
 
 }

@@ -57,8 +57,8 @@
                 <% Boolean alertaLotacao=(Boolean) request.getAttribute( "alertaLotacao" ); if(alertaLotacao !=null &&
                     alertaLotacao){ %>
 
-                    <div class="alert-dashboard">
-                        ATENÇÃO: Existem tanques próximos da superlotação!
+                    <div class="alert">
+                        ATENCÃO: Existem tanques próximos da lotação máxima!
                     </div>
 
                     <% } %>
@@ -101,6 +101,15 @@
 
                                 <div class="dashboard-number">
                                     <%= request.getAttribute("espacosDisponiveis") %>
+                                </div>
+
+                            </div>
+
+                            <div class="dashboard-card">
+                                <h2>Valor Estimado</h2>
+
+                                <div class="dashboard-number">
+                                    R$ <%= request.getAttribute("valorTotal") %>
                                 </div>
 
                             </div>
