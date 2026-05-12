@@ -36,6 +36,10 @@
                                         Tanques
                                     </a>
 
+                                    <a href="/AquaVidaManager/logout">
+                                        Sair
+                                    </a>
+
                                 </div>
 
                             </div>
