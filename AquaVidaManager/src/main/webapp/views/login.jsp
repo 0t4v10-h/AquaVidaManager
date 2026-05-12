@@ -38,7 +38,7 @@
 
                                 <input type="password" name="senha" placeholder="Digite sua senha">
 
-                                <button type="submit">
+                                <button class="link-btn btn-new" type="submit">
                                     Entrar
                                 </button>
 
@@ -49,7 +49,7 @@
                                     margin-top:20px;
                                 ">
 
-                                <a href="/AquaVidaManager/cadastro-usuario">
+                                <a class="link-btn btn-new" href="/AquaVidaManager/cadastro-usuario">
                                     Criar novo usuário
                                 </a>
 

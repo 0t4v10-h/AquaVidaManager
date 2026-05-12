@@ -44,7 +44,7 @@
                                                         value="<%= tanque.getPhIdeal() %>">
 
                                                 <div class="form-buttons">
-                                                        <button type="submit">
+                                                        <button class="link-btn btn-new" type="submit">
                                                                 Atualizar
                                                         </button>
 

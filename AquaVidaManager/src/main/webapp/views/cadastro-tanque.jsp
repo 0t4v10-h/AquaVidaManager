@@ -44,7 +44,7 @@
                         <input type="number" step="0.1" name="ph">
 
                         <div class="form-buttons">
-                            <button type="submit">
+                            <button class="link-btn btn-new" type="submit">
                                 Salvar
                             </button>
 
