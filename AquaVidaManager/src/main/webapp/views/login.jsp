@@ -1,72 +1,63 @@
-<% String erro=(String) request.getAttribute("erro"); %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <% String erro=(String) request.getAttribute("erro"); %>
 
-    <html>
+        <html>
 
-    <head>
+        <head>
 
-        <title>AquaVidaManager</title>
+            <title>AquaVidaManager</title>
+            <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
 
-        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+        </head>
 
-    </head>
+        <body class="login-body">
 
-    <body class="login-body">
+            <div class="login-container">
 
-        <div class="login-container">
+                <div class="login-card">
 
-            <div class="login-card">
+                    <h1>AquaVidaManager</h1>
 
-                <h1>AquaVidaManager</h1>
+                    <p class="subtitle">
+                        Controle inteligente de tanques e peixes
+                    </p>
 
-                <p class="subtitle">
-                    Controle inteligente de tanques e peixes
-                </p>
+                    <% if(erro !=null){ %>
+                        <div class="alert">
+                            <%= erro %>
+                        </div>
+                        <% } %>
 
-                <% if(erro !=null){ %>
+                            <form action="/AquaVidaManager/login" method="post">
 
-                    <div class="alert">
+                                <label>Usuário</label>
 
-                        <%= erro %>
+                                <input type="text" name="login" placeholder="Digite seu usuário">
 
-                    </div>
+                                <label>Senha</label>
 
-                    <% } %>
+                                <input type="password" name="senha" placeholder="Digite sua senha">
 
-                        <form action="/AquaVidaManager/login" method="post">
+                                <button type="submit">
+                                    Entrar
+                                </button>
 
-                            <label>Usuário</label>
+                            </form>
 
-                            <input type="text" name="login" placeholder="Digite seu usuário">
-
-                            <label>Senha</label>
-
-                            <input type="password" name="senha" placeholder="Digite sua senha">
-
-                            <button type="submit">
-
-                                Entrar
-
-                            </button>
-
-                        </form>
-
-                        <p style="
+                            <p style="
                                     text-align:center;
                                     margin-top:20px;
                                 ">
 
-                            <a href="/AquaVidaManager/cadastro-usuario">
+                                <a href="/AquaVidaManager/cadastro-usuario">
+                                    Criar novo usuário
+                                </a>
 
-                                Criar novo usuário
-
-                            </a>
-
-                        </p>
+                            </p>
+                </div>
 
             </div>
 
-        </div>
+        </body>
 
-    </body>
-
-    </html>
+        </html>

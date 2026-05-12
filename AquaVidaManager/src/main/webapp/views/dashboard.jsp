@@ -1,136 +1,126 @@
-<%@ page import="br.com.aquavida.model.Usuario" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ page import="br.com.aquavida.model.Usuario" %>
 
-    <% Usuario usuario=(Usuario) session.getAttribute("user"); if(usuario==null){
-        response.sendRedirect( "/AquaVidaManager/login" ); return; } %>
+        <% Usuario usuario=(Usuario) session.getAttribute("user"); if(usuario==null){
+            response.sendRedirect( "/AquaVidaManager/login" ); return; } %>
 
-        <html>
+            <html>
 
-        <head>
+            <head>
 
-            <title>Dashboard</title>
+                <title>Dashboard</title>
 
-            <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+                <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
 
-        </head>
+            </head>
 
-        <body>
+            <body>
 
-            <div class="navbar">
+                <div class="navbar">
 
-                <div class="logo">
-                    AquaVidaManager
-                </div>
+                    <div class="logo">AquaVidaManager</div>
 
-                <div class="menu">
+                    <div class="menu">
 
-                    <a href="/AquaVidaManager/peixes">
-                        Peixes
-                    </a>
+                        <a href="/AquaVidaManager/peixes">
+                            Peixes
+                        </a>
 
-                    <a href="/AquaVidaManager/tanques">
-                        Tanques
-                    </a>
+                        <a href="/AquaVidaManager/tanques">
+                            Tanques
+                        </a>
 
-                    <a href="/AquaVidaManager/logout">
-                        Sair
-                    </a>
+                        <a href="/AquaVidaManager/logout">
+                            Sair
+                        </a>
 
-                </div>
-
-            </div>
-
-            <div class="container">
-
-                <div class="welcome-box">
-
-                    <h1>
-                        Bem-vindo,
-                        <%= usuario.getNome() %>
-                    </h1>
-
-                    <p>
-                        Gerencie seus tanques e monitore a ocupação em tempo real.
-                    </p>
-
-                </div>
-
-                <% Boolean alertaLotacao=(Boolean) request.getAttribute( "alertaLotacao" ); if(alertaLotacao !=null &&
-                    alertaLotacao){ %>
-
-                    <div class="alert">
-                        ATENCÃO: Existem tanques próximos da lotação máxima!
                     </div>
 
-                    <% } %>
+                </div>
 
-                        <div class="dashboard-grid">
+                <div class="container">
 
-                            <div class="dashboard-card">
+                    <div class="welcome-box">
 
-                                <h2>Total de Peixes</h2>
+                        <h1>
+                            Bem-vindo,
+                            <%= usuario.getNome() %>
+                        </h1>
 
-                                <div class="dashboard-number">
-                                    <%= request.getAttribute("totalPeixes") %>
-                                </div>
+                        <p>
+                            Gerencie seus tanques e monitore a ocupação em tempo real.
+                        </p>
 
-                            </div>
+                    </div>
 
-                            <div class="dashboard-card">
+                    <% Boolean alertaLotacao=(Boolean) request.getAttribute( "alertaLotacao" ); if(alertaLotacao !=null
+                        && alertaLotacao){ %>
 
-                                <h2>Total de Tanques</h2>
-
-                                <div class="dashboard-number">
-                                    <%= request.getAttribute("totalTanques") %>
-                                </div>
-
-                            </div>
-
-                            <div class="dashboard-card">
-
-                                <h2>Ocupação Atual</h2>
-
-                                <div class="dashboard-number">
-                                    <%= request.getAttribute("ocupacaoTotal") %>
-                                </div>
-
-                            </div>
-
-                            <div class="dashboard-card">
-
-                                <h2>Espaços Disponíveis</h2>
-
-                                <div class="dashboard-number">
-                                    <%= request.getAttribute("espacosDisponiveis") %>
-                                </div>
-
-                            </div>
-
-                            <div class="dashboard-card">
-                                <h2>Valor Estimado</h2>
-
-                                <div class="dashboard-number">
-                                    R$ <%= request.getAttribute("valorTotal") %>
-                                </div>
-
-                            </div>
-
+                        <div class="alert">
+                            ATENCÃO: Existem tanques próximos da lotação máxima!
                         </div>
 
-                        <% if(usuario.getTipo().equals("ADMIN")){ %>
-                            <div class="quick-actions">
+                        <% } %>
 
-                                <a class="quick-btn" href="/AquaVidaManager/peixes?acao=novo">
-                                    Novo Peixe
-                                </a>
+                            <div class="dashboard-grid">
 
-                                <a class="quick-btn" href="/AquaVidaManager/tanques?acao=novo">
-                                    Novo Tanque
-                                </a>
+                                <div class="dashboard-card">
+                                    <h2>Total de Peixes</h2>
+                                    <div class="dashboard-number">
+                                        <%= request.getAttribute("totalPeixes") %>
+                                    </div>
+
+                                </div>
+
+                                <div class="dashboard-card">
+                                    <h2>Total de Tanques</h2>
+                                    <div class="dashboard-number">
+                                        <%= request.getAttribute("totalTanques") %>
+                                    </div>
+
+                                </div>
+
+                                <div class="dashboard-card">
+                                    <h2>Ocupação Atual</h2>
+                                    <div class="dashboard-number">
+                                        <%= request.getAttribute("ocupacaoTotal") %>
+                                    </div>
+
+                                </div>
+
+                                <div class="dashboard-card">
+                                    <h2>Espaços Disponíveis</h2>
+                                    <div class="dashboard-number">
+                                        <%= request.getAttribute("espacosDisponiveis") %>
+                                    </div>
+
+                                </div>
+
+                                <div class="dashboard-card">
+                                    <h2>Valor Total Estimado</h2>
+                                    <div class="dashboard-number">
+                                        R$ <%= request.getAttribute("valorTotal") %>
+                                    </div>
+
+                                </div>
+
                             </div>
-                            <% } %>
 
-            </div>
+                            <% if(usuario.getTipo().equals("ADMIN")){ %>
+                                <div class="quick-actions">
 
-        </body>
+                                    <a class="quick-btn" href="/AquaVidaManager/peixes?acao=novo">
+                                        Novo Peixe
+                                    </a>
 
-        </html>
+                                    <a class="quick-btn" href="/AquaVidaManager/tanques?acao=novo">
+                                        Novo Tanque
+                                    </a>
+                                </div>
+                                <% } %>
+
+                </div>
+
+            </body>
+
+            </html>

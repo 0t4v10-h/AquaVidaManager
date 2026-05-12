@@ -1,107 +1,104 @@
-<%@ page import="java.util.ArrayList" %>
-        <%@ page import="br.com.aquavida.model.Peixe" %>
-                <%@ page import="br.com.aquavida.model.Tanque" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+        <%@ page import="java.util.ArrayList" %>
+                <%@ page import="br.com.aquavida.model.Peixe" %>
+                        <%@ page import="br.com.aquavida.model.Tanque" %>
 
-                        <% Peixe peixe=(Peixe) request.getAttribute("peixe"); ArrayList<Tanque> listaTanques =
-                                (ArrayList<Tanque>)
-                                        request.getAttribute("listaTanques");
+                                <% Peixe peixe=(Peixe) request.getAttribute("peixe"); ArrayList<Tanque> listaTanques =
+                                        (ArrayList<Tanque>)
+                                                request.getAttribute("listaTanques");
 
-                                        %>
+                                                %>
 
-                                        <html>
+                                                <html>
 
-                                        <head>
+                                                <head>
 
-                                                <title>Editar Peixe</title>
+                                                        <title>Editar Peixe</title>
+                                                        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
 
-                                                <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+                                                </head>
 
-                                        </head>
+                                                <body>
 
-                                        <body>
+                                                        <div class="navbar">
 
-                                                <div class="navbar">
-
-                                                        <div class="logo">
-
-                                                                AquaVidaManager
+                                                                <div class="logo">AquaVidaManager</div>
 
                                                         </div>
 
-                                                </div>
+                                                        <div class="container">
 
-                                                <div class="container">
+                                                                <h1>Editar Peixe</h1>
 
-                                                        <h1>Editar Peixe</h1>
+                                                                <form action="/AquaVidaManager/peixes" method="post">
 
-                                                        <form action="/AquaVidaManager/peixes" method="post">
+                                                                        <input type="hidden" name="id"
+                                                                                value="<%= peixe.getId() %>">
 
-                                                                <input type="hidden" name="id"
-                                                                        value="<%= peixe.getId() %>">
+                                                                        <label>Nome</label>
+                                                                        <input type="text" name="nome"
+                                                                                value="<%= peixe.getNome() %>">
 
-                                                                <label>Nome</label>
-                                                                <input type="text" name="nome"
-                                                                        value="<%= peixe.getNome() %>">
+                                                                        <label>Espécie</label>
+                                                                        <input type="text" name="especie"
+                                                                                value="<%= peixe.getEspecie() %>">
 
-                                                                <label>Espécie</label>
-                                                                <input type="text" name="especie"
-                                                                        value="<%= peixe.getEspecie() %>">
+                                                                        <label>Quantidade</label>
+                                                                        <input type="number" name="quantidade"
+                                                                                value="<%= peixe.getQuantidade() %>">
 
-                                                                <label>Quantidade</label>
-                                                                <input type="number" name="quantidade"
-                                                                        value="<%= peixe.getQuantidade() %>">
+                                                                        <label>Peso Médio (kg)</label>
+                                                                        <input type="number" step="0.01"
+                                                                                name="pesoMedio"
+                                                                                value="<%= peixe.getPesoMedio() %>"
+                                                                                required>
 
-                                                                <label>Peso Médio (kg)</label>
-                                                                <input type="number" step="0.01" name="pesoMedio"
-                                                                        value="<%= peixe.getPesoMedio() %>" required>
+                                                                        <label>Preço por Kg</label>
+                                                                        <input type="number" step="0.01" name="precoKg"
+                                                                                value="<%= peixe.getPrecoKg() %>"
+                                                                                required>
 
-                                                                <label>Preço por Kg</label>
-                                                                <input type="number" step="0.01" name="precoKg"
-                                                                        value="<%= peixe.getPrecoKg() %>" required>
+                                                                        <label>Tanque</label>
+                                                                        <select name="tanque">
 
-                                                                <label>Tanque</label>
-                                                                <select name="tanque">
+                                                                                <% for(Tanque t : listaTanques){ %>
 
-                                                                        <% for(Tanque t : listaTanques){ %>
+                                                                                        <option value="<%= t.getId() %>"
+                                                                                                <% if(
+                                                                                                peixe.getTanqueId()==t.getId()
+                                                                                                ){ %>
 
-                                                                                <option value="<%= t.getId() %>" <% if(
-                                                                                        peixe.getTanqueId()==t.getId()
-                                                                                        ){ %>
+                                                                                                selected
 
-                                                                                        selected
+                                                                                                <% } %>
+                                                                                                        >
+
+                                                                                                        <%= t.getNome()
+                                                                                                                %>
+
+                                                                                        </option>
 
                                                                                         <% } %>
-                                                                                                >
 
-                                                                                                <%= t.getNome() %>
+                                                                        </select>
 
-                                                                                </option>
+                                                                        <div class="form-buttons">
 
-                                                                                <% } %>
+                                                                                <button type="submit">
+                                                                                        Atualizar
+                                                                                </button>
 
-                                                                </select>
+                                                                                <a class="link-btn btn-cancel"
+                                                                                        href="/AquaVidaManager/peixes">
+                                                                                        Cancelar
+                                                                                </a>
 
-                                                                <div class="form-buttons">
+                                                                        </div>
 
-                                                                        <button type="submit">
+                                                                </form>
 
-                                                                                Atualizar
+                                                        </div>
 
-                                                                        </button>
+                                                </body>
 
-                                                                        <a class="link-btn btn-cancel"
-                                                                                href="/AquaVidaManager/peixes">
-
-                                                                                Cancelar
-
-                                                                        </a>
-
-                                                                </div>
-
-                                                        </form>
-
-                                                </div>
-
-                                        </body>
-
-                                        </html>
+                                                </html>

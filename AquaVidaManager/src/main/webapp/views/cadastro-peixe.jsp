@@ -1,96 +1,90 @@
-<%@ page import="java.util.ArrayList" %>
-    <%@ page import="br.com.aquavida.model.Tanque" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <%@ page import="java.util.ArrayList" %>
+        <%@ page import="br.com.aquavida.model.Tanque" %>
 
-        <% ArrayList<Tanque> listaTanques =
-            (ArrayList<Tanque>)
-                request.getAttribute("listaTanques");
+            <% ArrayList<Tanque> listaTanques =
+                (ArrayList<Tanque>)
+                    request.getAttribute("listaTanques");
 
-                String erro =
-                (String)
-                request.getAttribute("erro");
+                    String erro =
+                    (String)
+                    request.getAttribute("erro");
 
-                %>
+                    %>
 
-                <html>
+                    <html>
 
-                <head>
+                    <head>
 
-                    <title>Novo Peixe</title>
+                        <title>Novo Peixe</title>
+                        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
 
-                    <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+                    </head>
 
-                </head>
+                    <body>
 
-                <body>
+                        <div class="navbar">
 
-                    <div class="navbar">
-
-                        <div class="logo">
-
-                            AquaVidaManager
+                            <div class="logo">AquaVidaManager</div>
 
                         </div>
 
-                    </div>
+                        <div class="container">
 
-                    <div class="container">
+                            <h1>Cadastrar Peixe</h1>
 
-                        <h1>Cadastrar Peixe</h1>
+                            <% if(erro !=null){ %>
 
-                        <% if(erro !=null){ %>
+                                <div class="alert">
+                                    <%= erro %>
+                                </div>
 
-                            <div class="alert">
+                                <% } %>
 
-                                <%= erro %>
+                                    <form action="/AquaVidaManager/peixes" method="post">
 
-                            </div>
+                                        <label>Nome</label>
+                                        <input type="text" name="nome">
 
-                            <% } %>
+                                        <label>Espécie</label>
+                                        <input type="text" name="especie">
 
-                                <form action="/AquaVidaManager/peixes" method="post">
+                                        <label>Quantidade</label>
+                                        <input type="number" name="quantidade">
 
-                                    <label>Nome</label>
-                                    <input type="text" name="nome">
+                                        <label>Peso Médio (kg)</label>
+                                        <input type="number" step="0.01" name="pesoMedio" required>
 
-                                    <label>Espécie</label>
-                                    <input type="text" name="especie">
+                                        <label>Preço por Kg</label>
+                                        <input type="number" step="0.01" name="precoKg" required>
 
-                                    <label>Quantidade</label>
-                                    <input type="number" name="quantidade">
+                                        <label>Tanque</label>
+                                        <select name="tanque">
 
-                                    <label>Peso Médio (kg)</label>
-                                    <input type="number" step="0.01" name="pesoMedio" required>
+                                            <% for(Tanque t : listaTanques){ %>
+                                                <option value="<%= t.getId() %>">
+                                                    <%= t.getNome() %>
+                                                </option>
+                                                <% } %>
 
-                                    <label>Preço por Kg</label>
-                                    <input type="number" step="0.01" name="precoKg" required>
+                                        </select>
 
-                                    <label>Tanque</label>
-                                    <select name="tanque">
+                                        <div class="form-buttons">
 
-                                        <% for(Tanque t : listaTanques){ %>
-                                            <option value="<%= t.getId() %>">
-                                                <%= t.getNome() %>
-                                            </option>
-                                            <% } %>
+                                            <button type="submit">
+                                                Salvar
+                                            </button>
 
-                                    </select>
+                                            <a class="link-btn cancel-btn" href="/AquaVidaManager/peixes">
+                                                Cancelar
+                                            </a>
 
-                                    <div class="form-buttons">
+                                        </div>
 
-                                        <button type="submit">
-                                            Salvar
-                                        </button>
+                                    </form>
 
-                                        <a class="link-btn cancel-btn" href="/AquaVidaManager/peixes">
-                                            Cancelar
-                                        </a>
+                        </div>
 
-                                    </div>
+                    </body>
 
-                                </form>
-
-                    </div>
-
-                </body>
-
-                </html>
+                    </html>

@@ -1,66 +1,58 @@
-<html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+    <html>
 
-<head>
+    <head>
 
-    <title>Criar Usuário</title>
+        <title>Criar Usuário</title>
 
-    <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
 
-</head>
+    </head>
 
-<body class="login-body">
+    <body class="login-body">
 
-    <div class="login-container">
+        <div class="login-container">
 
-        <div class="login-card">
+            <div class="login-card">
 
-            <h1>Criar Usuário</h1>
+                <h1>Criar Usuário</h1>
 
-            <p class="subtitle">
+                <p class="subtitle">
+                    Cadastre um novo acesso ao sistema
+                </p>
 
-                Cadastre um novo acesso ao sistema
+                <form action="/AquaVidaManager/cadastro-usuario" method="post">
 
-            </p>
+                    <label>Nome</label>
+                    <input type="text" name="nome" placeholder="Digite seu nome">
 
-            <form action="/AquaVidaManager/cadastro-usuario" method="post">
+                    <label>Login</label>
+                    <input type="text" name="login" placeholder="Digite o login">
 
-                <label>Nome</label>
+                    <label>Senha</label>
+                    <input type="password" name="senha" placeholder="Digite a senha">
 
-                <input type="text" name="nome" placeholder="Digite seu nome">
+                    <button type="submit">
+                        Criar Usuário
+                    </button>
 
-                <label>Login</label>
+                </form>
 
-                <input type="text" name="login" placeholder="Digite o login">
-
-                <label>Senha</label>
-
-                <input type="password" name="senha" placeholder="Digite a senha">
-
-                <button type="submit">
-
-                    Criar Usuário
-
-                </button>
-
-            </form>
-
-            <p style="
+                <p style="
                     text-align:center;
                     margin-top:20px;
                 ">
 
-                <a href="/AquaVidaManager/login">
+                    <a href="/AquaVidaManager/login">
+                        Voltar para login
+                    </a>
 
-                    Voltar para login
+                </p>
 
-                </a>
-
-            </p>
+            </div>
 
         </div>
 
-    </div>
+    </body>
 
-</body>
-
-</html>
+    </html>
