@@ -69,7 +69,9 @@
                             <div class="dashboard-grid">
 
                                 <div class="dashboard-card">
-                                    <h2>Total de Peixes</h2>
+                                    <h2>
+                                        Total de Peixes
+                                    </h2>
                                     <div class="dashboard-number">
                                         <%= request.getAttribute("totalPeixes") %>
                                     </div>
@@ -77,7 +79,9 @@
                                 </div>
 
                                 <div class="dashboard-card">
-                                    <h2>Total de Tanques</h2>
+                                    <h2>
+                                        Total de Tanques
+                                    </h2>
                                     <div class="dashboard-number">
                                         <%= request.getAttribute("totalTanques") %>
                                     </div>
@@ -85,7 +89,9 @@
                                 </div>
 
                                 <div class="dashboard-card">
-                                    <h2>Ocupação Atual</h2>
+                                    <h2>
+                                        Ocupação Atual
+                                    </h2>
                                     <div class="dashboard-number">
                                         <%= request.getAttribute("ocupacaoTotal") %>
                                     </div>
@@ -93,7 +99,9 @@
                                 </div>
 
                                 <div class="dashboard-card">
-                                    <h2>Espaços Disponíveis</h2>
+                                    <h2>
+                                        Espaços Disponíveis
+                                    </h2>
                                     <div class="dashboard-number">
                                         <%= request.getAttribute("espacosDisponiveis") %>
                                     </div>
@@ -101,12 +109,45 @@
                                 </div>
 
                                 <div class="dashboard-card">
-                                    <h2>Valor Total Estimado</h2>
+                                    <h2>
+                                        Valor do Estoque Estimado
+                                    </h2>
                                     <div class="dashboard-number">
-                                        R$ <%= request.getAttribute("valorTotal") %>
+                                        R$ <%= String.format( "%.2f" , request.getAttribute("valorTotal") ) %>
                                     </div>
 
                                 </div>
+
+                                <div class="dashboard-card">
+                                    <h2>
+                                        Total Vendido
+                                    </h2>
+                                    <div class="dashboard-number">
+                                        R$ <%= String.format( "%.2f" , request.getAttribute("totalVendido") ) %>
+                                    </div>
+
+                                </div>
+
+                                <div class="dashboard-card">
+                                    <h2>
+                                        Vendas Realizadas
+                                    </h2>
+                                    <div class="dashboard-number">
+                                        <%= request.getAttribute("totalVendas") %>
+                                    </div>
+
+                                </div>
+
+                                <div class="dashboard-card">
+                                    <h2>
+                                        Peixe Mais Vendido
+                                    </h2>
+                                    <div class="dashboard-number">
+                                        <%= request.getAttribute("peixeMaisVendido") %>
+                                    </div>
+
+                                </div>
+
 
                             </div>
 
@@ -117,7 +158,7 @@
                                         Novo Peixe
                                     </a>
 
-                                    <a class="quick-btn" href="/AquaVidaManager/tanques?acao=novo">
+                                    <a class="quick-btn" href="/AquaVidaManager/views/cadastro-tanque.jsp">
                                         Novo Tanque
                                     </a>
                                 </div>

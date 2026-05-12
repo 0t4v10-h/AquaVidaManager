@@ -31,15 +31,11 @@ public class VendaDAO {
             stmt.setDouble(3, venda.getValorTotal());
 
             stmt.execute();
-
             stmt.close();
-
             conexao.close();
 
         } catch (Exception e) {
-
             e.printStackTrace();
-
         }
 
     }
@@ -101,19 +97,107 @@ public class VendaDAO {
             }
 
             rs.close();
-
             stmt.close();
-
             conexao.close();
 
         } catch (Exception e) {
-
             e.printStackTrace();
-
         }
-
         return lista;
-
     }
 
+    public double totalVendido(){
+
+        String sql =
+                "SELECT SUM(valor_total) AS total FROM venda";
+
+        try{
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            ResultSet rs =
+                    stmt.executeQuery();
+
+            if(rs.next()){
+
+                return rs.getDouble("total");
+
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int totalVendas(){
+
+        String sql =
+                "SELECT COUNT(*) AS total FROM venda";
+
+        try{
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            ResultSet rs =
+                    stmt.executeQuery();
+
+            if(rs.next()){
+
+                return rs.getInt("total");
+
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+    public String peixeMaisVendido(){
+
+        String sql =
+                "SELECT p.nome, " +
+                        "SUM(v.quantidade) AS total " +
+                        "FROM venda v " +
+                        "INNER JOIN peixe p " +
+                        "ON v.peixe_id = p.id " +
+                        "GROUP BY p.nome " +
+                        "ORDER BY total DESC " +
+                        "LIMIT 1";
+
+        try{
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            ResultSet rs =
+                    stmt.executeQuery();
+
+            if(rs.next()){
+
+                return rs.getString("nome") +
+                        " - " +
+                        rs.getInt("total") +
+                        " vendidos";
+
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return "Nenhuma venda";
+    }
 }

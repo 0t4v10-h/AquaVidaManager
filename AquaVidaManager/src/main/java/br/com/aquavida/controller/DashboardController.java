@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import br.com.aquavida.dao.PeixeDAO;
 import br.com.aquavida.dao.TanqueDAO;
+import br.com.aquavida.dao.VendaDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,6 +26,9 @@ public class DashboardController extends HttpServlet {
         TanqueDAO tanqueDAO =
                 new TanqueDAO();
 
+        VendaDAO vendaDAO =
+                new VendaDAO();
+
         int totalPeixes =
                 peixeDAO.totalPeixes();
 
@@ -36,6 +40,15 @@ public class DashboardController extends HttpServlet {
 
         int espacosDisponiveis =
                 tanqueDAO.espacosDisponiveis();
+
+        double totalVendido =
+                vendaDAO.totalVendido();
+
+        int totalVendas =
+                vendaDAO.totalVendas();
+
+        String peixeMaisVendido =
+                vendaDAO.peixeMaisVendido();
 
         boolean alertaLotacao =
                 false;
@@ -74,6 +87,21 @@ public class DashboardController extends HttpServlet {
         req.setAttribute(
                 "espacosDisponiveis",
                 espacosDisponiveis
+        );
+
+        req.setAttribute(
+                "totalVendido",
+                totalVendido
+        );
+
+        req.setAttribute(
+                "totalVendas",
+                totalVendas
+        );
+
+        req.setAttribute(
+                "peixeMaisVendido",
+                peixeMaisVendido
         );
 
         req.setAttribute(
