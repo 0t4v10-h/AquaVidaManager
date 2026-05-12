@@ -18,9 +18,7 @@
             <div class="navbar">
 
                 <div class="logo">
-
                     AquaVidaManager
-
                 </div>
 
                 <div class="menu">
@@ -42,16 +40,12 @@
                 <div class="welcome-box">
 
                     <h1>
-
                         Bem-vindo,
                         <%= usuario.getNome() %>
-
                     </h1>
 
                     <p>
-
                         Gerencie seus tanques e monitore a ocupação em tempo real.
-
                     </p>
 
                 </div>
@@ -60,9 +54,7 @@
                     alertaLotacao){ %>
 
                     <div class="alert-dashboard">
-
-                        ⚠ Existem tanques próximos da superlotação!
-
+                        ATENÇÃO: Existem tanques próximos da superlotação!
                     </div>
 
                     <% } %>
@@ -74,9 +66,7 @@
                                 <h2>Total de Peixes</h2>
 
                                 <div class="dashboard-number">
-
                                     <%= request.getAttribute("totalPeixes") %>
-
                                 </div>
 
                             </div>
@@ -86,9 +76,7 @@
                                 <h2>Total de Tanques</h2>
 
                                 <div class="dashboard-number">
-
                                     <%= request.getAttribute("totalTanques") %>
-
                                 </div>
 
                             </div>
@@ -98,9 +86,7 @@
                                 <h2>Ocupação Atual</h2>
 
                                 <div class="dashboard-number">
-
                                     <%= request.getAttribute("ocupacaoTotal") %>
-
                                 </div>
 
                             </div>
@@ -110,30 +96,25 @@
                                 <h2>Espaços Disponíveis</h2>
 
                                 <div class="dashboard-number">
-
                                     <%= request.getAttribute("espacosDisponiveis") %>
-
                                 </div>
 
                             </div>
 
                         </div>
 
-                        <div class="quick-actions">
+                        <% if(usuario.getTipo().equals("ADMIN")){ %>
+                            <div class="quick-actions">
 
-                            <a class="quick-btn" href="/AquaVidaManager/peixes?acao=novo">
+                                <a class="quick-btn" href="/AquaVidaManager/peixes?acao=novo">
+                                    Novo Peixe
+                                </a>
 
-                                Novo Peixe
-
-                            </a>
-
-                            <a class="quick-btn" href="/AquaVidaManager/tanques?acao=novo">
-
-                                Novo Tanque
-
-                            </a>
-
-                        </div>
+                                <a class="quick-btn" href="/AquaVidaManager/tanques?acao=novo">
+                                    Novo Tanque
+                                </a>
+                            </div>
+                            <% } %>
 
             </div>
 

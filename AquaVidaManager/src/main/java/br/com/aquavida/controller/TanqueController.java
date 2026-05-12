@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import br.com.aquavida.dao.TanqueDAO;
 import br.com.aquavida.model.Tanque;
+import br.com.aquavida.model.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,6 +21,10 @@ public class TanqueController extends HttpServlet {
             HttpServletResponse resp
     ) throws ServletException, IOException {
 
+        Usuario usuario =
+                (Usuario)
+                        req.getSession()
+                                .getAttribute("user");
         String acao =
                 req.getParameter("acao");
 
@@ -28,6 +33,12 @@ public class TanqueController extends HttpServlet {
 
         if("excluir".equals(acao)){
 
+            if(!usuario.getTipo().equals("ADMIN")){
+                resp.sendRedirect(
+                        "/AquaVidaManager/dashboard"
+                );
+                return;
+            }
             int id =
                     Integer.parseInt(
                             req.getParameter("id")
@@ -60,6 +71,12 @@ public class TanqueController extends HttpServlet {
 
         } else if("editar".equals(acao)) {
 
+            if(!usuario.getTipo().equals("ADMIN")){
+                resp.sendRedirect(
+                        "/AquaVidaManager/dashboard"
+                );
+                return;
+            }
             int id =
                     Integer.parseInt(
                             req.getParameter("id")
@@ -78,7 +95,6 @@ public class TanqueController extends HttpServlet {
             ).forward(req, resp);
 
         } else {
-
             ArrayList<Tanque> lista =
                     dao.listar();
 
@@ -100,6 +116,18 @@ public class TanqueController extends HttpServlet {
             HttpServletRequest req,
             HttpServletResponse resp
     ) throws ServletException, IOException {
+
+        Usuario usuario =
+                (Usuario)
+                        req.getSession()
+                                .getAttribute("user");
+
+        if(!usuario.getTipo().equals("ADMIN")){
+            resp.sendRedirect(
+                    "/AquaVidaManager/peixes"
+            );
+            return;
+        }
 
         String nome =
                 req.getParameter("nome");

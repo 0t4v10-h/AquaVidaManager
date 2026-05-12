@@ -1,123 +1,116 @@
 <%@ page import="java.util.ArrayList" %>
     <%@ page import="br.com.aquavida.model.Peixe" %>
+        <%@ page import="br.com.aquavida.model.Usuario" %>
+            <% Usuario usuario=(Usuario) session.getAttribute("user"); %>
+                <% ArrayList<Peixe> lista =
+                    (ArrayList<Peixe>)
+                        request.getAttribute("listaPeixes");
 
-        <% ArrayList<Peixe> lista =
-            (ArrayList<Peixe>)
-                request.getAttribute("listaPeixes");
+                        %>
 
-                %>
+                        <html>
 
-                <html>
+                        <head>
 
-                <head>
+                            <title>Peixes</title>
 
-                    <title>Peixes</title>
+                            <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
 
-                    <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+                        </head>
 
-                </head>
+                        <body>
 
-                <body>
+                            <div class="navbar">
 
-                    <div class="navbar">
+                                <div class="logo">
+                                    AquaVidaManager
+                                </div>
 
-                        <div class="logo">
+                                <div class="menu">
 
-                            AquaVidaManager
+                                    <a href="/AquaVidaManager/dashboard">
+                                        Home
+                                    </a>
 
-                        </div>
+                                    <a href="/AquaVidaManager/tanques">
+                                        Tanques
+                                    </a>
 
-                        <div class="menu">
+                                </div>
 
-                            <a href="/AquaVidaManager/dashboard">
+                            </div>
 
-                                Home
+                            <div class="container">
 
-                            </a>
+                                <h1>Gerenciamento de Peixes</h1>
 
-                            <a href="/AquaVidaManager/tanques">
+                                <% if(usuario.getTipo().equals("ADMIN")){ %>
+                                    <a class="link-btn btn-new" href="/AquaVidaManager/peixes?acao=novo">
+                                        Novo Peixe
+                                    </a>
+                                    <% } %>
 
-                                Tanques
+                                        <table>
 
-                            </a>
+                                            <tr>
 
-                        </div>
+                                                <th>ID</th>
+                                                <th>Nome</th>
+                                                <th>Espécie</th>
+                                                <th>Quantidade</th>
+                                                <th>Tanque</th>
+                                                <th>Ações</th>
 
-                    </div>
+                                            </tr>
 
-                    <div class="container">
+                                            <% for(Peixe p : lista){ %>
 
-                        <h1>Gerenciamento de Peixes</h1>
+                                                <tr>
 
-                        <a class="link-btn btn-new" href="/AquaVidaManager/peixes?acao=novo">
+                                                    <td>
+                                                        <%= p.getId() %>
+                                                    </td>
 
-                            Novo Peixe
+                                                    <td>
+                                                        <%= p.getNome() %>
+                                                    </td>
 
-                        </a>
+                                                    <td>
+                                                        <%= p.getEspecie() %>
+                                                    </td>
 
-                        <table>
+                                                    <td>
+                                                        <%= p.getQuantidade() %>
+                                                    </td>
 
-                            <tr>
+                                                    <td>
+                                                        <%= p.getNomeTanque() %>
+                                                    </td>
 
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Espécie</th>
-                                <th>Quantidade</th>
-                                <th>Tanque</th>
-                                <th>Ações</th>
+                                                    <td>
+                                                        <% if(usuario.getTipo().equals("ADMIN")){ %>
 
-                            </tr>
+                                                            <a class="link-btn btn-edit"
+                                                                href="/AquaVidaManager/peixes?acao=editar&id=<%= p.getId() %>">
+                                                                Editar
+                                                            </a>
 
-                            <% for(Peixe p : lista){ %>
+                                                            <a class="link-btn btn-delete"
+                                                                href="/AquaVidaManager/peixes?acao=excluir&id=<%= p.getId() %>">
+                                                                Excluir
+                                                            </a>
+                                                            <% } %>
 
-                                <tr>
+                                                    </td>
 
-                                    <td>
-                                        <%= p.getId() %>
-                                    </td>
+                                                </tr>
 
-                                    <td>
-                                        <%= p.getNome() %>
-                                    </td>
+                                                <% } %>
 
-                                    <td>
-                                        <%= p.getEspecie() %>
-                                    </td>
+                                        </table>
 
-                                    <td>
-                                        <%= p.getQuantidade() %>
-                                    </td>
+                            </div>
 
-                                    <td>
-                                        <%= p.getNomeTanque() %>
-                                    </td>
+                        </body>
 
-                                    <td>
-
-                                        <a class="link-btn btn-edit"
-                                            href="/AquaVidaManager/peixes?acao=editar&id=<%= p.getId() %>">
-
-                                            Editar
-
-                                        </a>
-
-                                        <a class="link-btn btn-delete"
-                                            href="/AquaVidaManager/peixes?acao=excluir&id=<%= p.getId() %>">
-
-                                            Excluir
-
-                                        </a>
-
-                                    </td>
-
-                                </tr>
-
-                                <% } %>
-
-                        </table>
-
-                    </div>
-
-                </body>
-
-                </html>
+                        </html>

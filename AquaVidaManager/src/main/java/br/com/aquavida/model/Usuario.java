@@ -10,6 +10,8 @@ public class Usuario {
 
     private String senha;
 
+    private String tipo;
+
     public Usuario() {
     }
 
@@ -45,4 +47,11 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 }

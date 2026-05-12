@@ -46,6 +46,8 @@ public class CadastroUsuarioController extends HttpServlet {
                 req.getParameter("senha")
         );
 
+        usuario.setTipo("USER");
+
         UsuarioDAO dao =
                 new UsuarioDAO();
 

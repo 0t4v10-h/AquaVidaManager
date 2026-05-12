@@ -47,6 +47,10 @@ public class UsuarioDAO {
                         rs.getString("login")
                 );
 
+                usuario.setTipo(
+                        rs.getString("tipo")
+                );
+
                 return usuario;
 
             }
@@ -65,8 +69,8 @@ public class UsuarioDAO {
 
         String sql =
                 "INSERT INTO usuario " +
-                        "(nome, login, senha) " +
-                        "VALUES (?, ?, ?)";
+                        "(nome, login, senha, tipo) " +
+                        "VALUES (?, ?, ?, ?)";
 
         try {
 
@@ -89,6 +93,11 @@ public class UsuarioDAO {
             stmt.setString(
                     3,
                     usuario.getSenha()
+            );
+
+            stmt.setString(
+                4, 
+                    usuario.getTipo()
             );
 
             stmt.execute();

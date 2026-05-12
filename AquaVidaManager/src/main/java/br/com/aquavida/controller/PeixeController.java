@@ -7,6 +7,7 @@ import br.com.aquavida.dao.PeixeDAO;
 import br.com.aquavida.dao.TanqueDAO;
 import br.com.aquavida.model.Peixe;
 import br.com.aquavida.model.Tanque;
+import br.com.aquavida.model.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,6 +22,11 @@ public class PeixeController extends HttpServlet {
             HttpServletRequest req,
             HttpServletResponse resp
     ) throws ServletException, IOException {
+
+        Usuario usuario =
+        (Usuario)
+                req.getSession()
+                        .getAttribute("user");
 
         String acao =
                 req.getParameter("acao");
@@ -37,6 +43,12 @@ public class PeixeController extends HttpServlet {
         );
 
         if("excluir".equals(acao)){
+            if(!usuario.getTipo().equals("ADMIN")){
+                resp.sendRedirect(
+                        "/AquaVidaManager/dashboard"
+                );
+                return;
+            }
 
             int id =
                     Integer.parseInt(
@@ -65,6 +77,12 @@ public class PeixeController extends HttpServlet {
         }
         else if("editar".equals(acao)){
 
+            if(!usuario.getTipo().equals("ADMIN")){
+                resp.sendRedirect(
+                        "/AquaVidaManager/dashboard"
+                );
+                return;
+            }
             int id =
                     Integer.parseInt(
                             req.getParameter("id")
@@ -93,12 +111,17 @@ public class PeixeController extends HttpServlet {
         }
         else if("novo".equals(acao)){
 
+            if(!usuario.getTipo().equals("ADMIN")){
+                resp.sendRedirect(
+                        "/AquaVidaManager/dashboard"
+                );
+                return;
+            }
             req.getRequestDispatcher(
                     "views/cadastro-peixe.jsp"
             ).forward(req, resp);
 
         }else{
-
             PeixeDAO dao =
                     new PeixeDAO();
 
@@ -123,6 +146,18 @@ public class PeixeController extends HttpServlet {
             HttpServletRequest req,
             HttpServletResponse resp
     ) throws ServletException, IOException {
+
+        Usuario usuario =
+                (Usuario)
+                        req.getSession()
+                                .getAttribute("user");
+
+        if(!usuario.getTipo().equals("ADMIN")){
+            resp.sendRedirect(
+                    "/AquaVidaManager/peixes"
+            );
+            return;
+        }
 
         String nome =
                 req.getParameter("nome");
@@ -267,7 +302,5 @@ public class PeixeController extends HttpServlet {
         resp.sendRedirect(
                 "/AquaVidaManager/peixes"
         );
-
     }
-
 }
