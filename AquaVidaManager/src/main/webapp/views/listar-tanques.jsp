@@ -37,6 +37,10 @@
                                             Peixes
                                         </a>
 
+                                        <a href="/AquaVidaManager/vendas">
+                                            Vendas
+                                        </a>
+
                                         <a href="/AquaVidaManager/logout">
                                             Sair
                                         </a>

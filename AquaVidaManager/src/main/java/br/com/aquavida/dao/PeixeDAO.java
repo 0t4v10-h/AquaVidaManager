@@ -338,4 +338,35 @@ public class PeixeDAO {
         return 0;
     }
 
+    public void atualizarQuantidade(int peixeId, int novaQuantidade){
+
+        String sql =
+                "UPDATE peixe SET quantidade = ? WHERE id = ?";
+
+        try {
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            stmt.setInt(1, novaQuantidade);
+
+            stmt.setInt(2, peixeId);
+
+            stmt.execute();
+
+            stmt.close();
+
+            conexao.close();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
 }
