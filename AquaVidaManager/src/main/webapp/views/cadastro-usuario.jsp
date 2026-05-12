@@ -21,33 +21,43 @@
                     Cadastre um novo acesso ao sistema
                 </p>
 
-                <form action="/AquaVidaManager/cadastro-usuario" method="post">
+                <% if(request.getAttribute("erro") !=null){ %>
 
-                    <label>Nome</label>
-                    <input type="text" name="nome" placeholder="Digite seu nome">
+                    <div class="alert">
 
-                    <label>Login</label>
-                    <input type="text" name="login" placeholder="Digite o login">
+                        <%= request.getAttribute("erro") %>
 
-                    <label>Senha</label>
-                    <input type="password" name="senha" placeholder="Digite a senha">
+                    </div>
 
-                    <button class="link-btn btn-new" type="submit">
-                        Criar Usuário
-                    </button>
+                    <% } %>
 
-                </form>
+                        <form action="/AquaVidaManager/cadastro-usuario" method="post">
 
-                <p style="
+                            <label>Nome</label>
+                            <input type="text" name="nome" required placeholder="Digite seu nome">
+
+                            <label>Login</label>
+                            <input type="text" name="login" required placeholder="Digite o login">
+
+                            <label>Senha</label>
+                            <input type="password" name="senha" minlength="3" required placeholder="Digite a senha">
+
+                            <button class="link-btn btn-new" type="submit">
+                                Criar Usuário
+                            </button>
+
+                        </form>
+
+                        <p style="
                     text-align:center;
                     margin-top:20px;
                 ">
 
-                    <a class="link-btn btn-new" href="/AquaVidaManager/login">
-                        Voltar para login
-                    </a>
+                            <a class="link-btn btn-new" href="/AquaVidaManager/login">
+                                Voltar para login
+                            </a>
 
-                </p>
+                        </p>
 
             </div>
 

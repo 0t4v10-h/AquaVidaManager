@@ -114,4 +114,41 @@ public class UsuarioDAO {
 
     }
 
+    public boolean loginExiste(String login){
+
+        String sql =
+                "SELECT * FROM usuario WHERE login = ?";
+
+        try{
+
+            Connection conexao =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conexao.prepareStatement(sql);
+
+            stmt.setString(1, login);
+
+            ResultSet rs =
+                    stmt.executeQuery();
+
+            boolean existe =
+                    rs.next();
+
+            rs.close();
+            stmt.close();
+            conexao.close();
+
+            return existe;
+
+        }catch(Exception e){
+
+            e.printStackTrace();
+
+        }
+
+        return false;
+
+    }
+
 }
