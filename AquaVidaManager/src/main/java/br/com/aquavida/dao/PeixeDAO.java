@@ -241,7 +241,7 @@ public class PeixeDAO {
 
     }
 
-    public void excluir(int id){
+    public boolean excluir(int id){
 
         String sql =
                 "DELETE FROM peixe WHERE id = ?";
@@ -262,12 +262,14 @@ public class PeixeDAO {
 
             conexao.close();
 
+            return true;
+
         } catch (Exception e) {
 
             e.printStackTrace();
 
         }
-
+        return false;
     }
 
     public int totalPeixes(){
