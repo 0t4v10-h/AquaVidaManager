@@ -75,7 +75,7 @@
                                                 Salvar
                                             </button>
 
-                                            <a class="link-btn cancel-btn" href="/AquaVidaManager/peixes">
+                                            <a class="link-btn btn-cancel" href="/AquaVidaManager/peixes">
                                                 Cancelar
                                             </a>
 

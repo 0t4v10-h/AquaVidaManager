@@ -48,7 +48,7 @@
                                 Salvar
                             </button>
 
-                            <a class="link-btn cancel-btn" href="/AquaVidaManager/tanques">
+                            <a class="link-btn btn-cancel" href="/AquaVidaManager/tanques">
                                 Cancelar
                             </a>
                         </div>
