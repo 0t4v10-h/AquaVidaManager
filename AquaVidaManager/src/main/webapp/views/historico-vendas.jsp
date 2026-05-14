@@ -61,105 +61,71 @@
 
                                                 <h1>Controle de Vendas</h1>
 
-                                                <div class="card">
+                                                <% String sucesso=request.getParameter("sucesso"); if(sucesso !=null){
+                                                    %>
 
-                                                    <h2>Registrar Venda</h2>
+                                                    <div class="success">
 
-                                                    <form action="/AquaVidaManager/vendas" method="post">
+                                                        <% if(sucesso.equals("registrada")) { %>
+                                                            Venda registrada com sucesso!
+                                                            <% } %>
 
-                                                        <div class="form-group">
+                                                    </div>
 
-                                                            <label>Peixe</label>
+                                                    <% } %>
 
-                                                            <select name="peixeId" required>
+                                                        <div class="card">
 
-                                                                <% for(Peixe peixe : peixes) { %>
-                                                                    <option value="<%= peixe.getId() %>">
-                                                                        <%= peixe.getNome() %>
-                                                                            -
-                                                                            Estoque:
-                                                                            <%= peixe.getQuantidade() %>
-                                                                    </option>
-                                                                    <% } %>
+                                                            <h2>Registrar Venda</h2>
 
-                                                            </select>
+                                                            <form action="/AquaVidaManager/vendas" method="post">
 
-                                                        </div>
+                                                                <div class="form-group">
 
-                                                        <div class="form-group">
-                                                            <label>Quantidade</label>
-                                                            <input type="number" name="quantidade" min="1" required>
-                                                        </div>
+                                                                    <label>Peixe</label>
 
-                                                        <button class="link-btn btn-new" type="submit">
-                                                            Registrar Venda
-                                                        </button>
+                                                                    <select name="peixeId" required>
 
-                                                    </form>
+                                                                        <% for(Peixe peixe : peixes) { %>
+                                                                            <option value="<%= peixe.getId() %>">
+                                                                                <%= peixe.getNome() %>
+                                                                                    -
+                                                                                    Estoque:
+                                                                                    <%= peixe.getQuantidade() %>
+                                                                            </option>
+                                                                            <% } %>
 
-                                                </div>
+                                                                    </select>
 
-                                                <h2 class="section-title">
-                                                    Histórico de Vendas
-                                                </h2>
+                                                                </div>
 
-                                                <div class="sales-list">
+                                                                <div class="form-group">
+                                                                    <label>Quantidade</label>
+                                                                    <input type="number" name="quantidade" min="1"
+                                                                        required>
+                                                                </div>
 
-                                                    <% if(vendas.isEmpty()) { %>
+                                                                <button class="link-btn btn-new" type="submit">
+                                                                    Registrar Venda
+                                                                </button>
 
-                                                        <div class="sale-item">
-
-                                                            <div class="sale-info">
-
-                                                                Nenhuma venda registrada.
-
-                                                            </div>
+                                                            </form>
 
                                                         </div>
 
-                                                        <% } %>
+                                                        <h2 class="section-title">
+                                                            Histórico de Vendas
+                                                        </h2>
 
-                                                            <% for(Venda venda : vendas) { %>
+                                                        <div class="sales-list">
+
+                                                            <% if(vendas.isEmpty()) { %>
 
                                                                 <div class="sale-item">
 
                                                                     <div class="sale-info">
 
-                                                                        <strong>
-                                                                            <%= venda.getNomePeixe() %>
-                                                                        </strong>
-
-                                                                    </div>
-
-                                                                    <div class="sale-info">
-
-                                                                        <strong>
-                                                                            Quantidade:
-                                                                        </strong>
-
-                                                                        <%= venda.getQuantidade() %>
-
-                                                                    </div>
-
-                                                                    <div class="sale-info">
-
-                                                                        <strong>
-                                                                            Valor:
-                                                                        </strong>
-
-                                                                        R$
-                                                                        <%= String.format("%.2f", venda.getValorTotal())
-                                                                            %>
-
-                                                                    </div>
-
-                                                                    <div class="sale-info">
-
-                                                                        <strong>
-                                                                            Data:
-                                                                        </strong>
-
-                                                                        <%= venda.getDataVenda() %>
+                                                                        Nenhuma venda registrada.
 
                                                                     </div>
 
@@ -167,7 +133,55 @@
 
                                                                 <% } %>
 
-                                                </div>
+                                                                    <% for(Venda venda : vendas) { %>
+
+                                                                        <div class="sale-item">
+
+                                                                            <div class="sale-info">
+
+                                                                                <strong>
+                                                                                    <%= venda.getNomePeixe() %>
+                                                                                </strong>
+
+                                                                            </div>
+
+                                                                            <div class="sale-info">
+
+                                                                                <strong>
+                                                                                    Quantidade:
+                                                                                </strong>
+
+                                                                                <%= venda.getQuantidade() %>
+
+                                                                            </div>
+
+                                                                            <div class="sale-info">
+
+                                                                                <strong>
+                                                                                    Valor:
+                                                                                </strong>
+
+                                                                                R$
+                                                                                <%= String.format("%.2f",
+                                                                                    venda.getValorTotal()) %>
+
+                                                                            </div>
+
+                                                                            <div class="sale-info">
+
+                                                                                <strong>
+                                                                                    Data:
+                                                                                </strong>
+
+                                                                                <%= venda.getDataVenda() %>
+
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        <% } %>
+
+                                                        </div>
 
                                             </div>
 

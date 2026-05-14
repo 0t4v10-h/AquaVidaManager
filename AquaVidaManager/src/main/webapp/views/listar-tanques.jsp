@@ -61,111 +61,134 @@
 
                                     <h1>Gerenciamento de Tanques</h1>
 
-                                    <% if(usuario.getTipo().equals("ADMIN")){ %>
-                                        <a class="link-btn btn-new" href="/AquaVidaManager/views/cadastro-tanque.jsp">
-                                            Novo Tanque
-                                        </a>
-                                        <% } %>
+                                    <% String sucesso=request.getParameter("sucesso"); if(sucesso !=null){ %>
 
-                                            <% if(erro !=null){ %>
+                                        <div class="success">
 
-                                                <div class="alert">
-                                                    <%= erro %>
-                                                </div>
-
+                                            <% if(sucesso.equals("salvo")) { %>
+                                                Tanque cadastrado com sucesso!
                                                 <% } %>
 
-                                                    <div class="cards-container">
+                                                    <% if(sucesso.equals("editado")) { %>
+                                                        Tanque atualizado com sucesso!
+                                                        <% } %>
 
-                                                        <% for(Tanque t : lista){ %>
+                                                            <% if(sucesso.equals("excluido")) { %>
+                                                                Tanque excluído com sucesso!
+                                                                <% } %>
 
-                                                            <div class="card">
+                                        </div>
 
-                                                                <h2>
-                                                                    <%= t.getNome() %>
-                                                                </h2>
+                                        <% } %>
 
-                                                                <div class="card-info">
-                                                                    <strong>Capacidade:</strong>
-                                                                    <%= t.getCapacidade() %>
-                                                                </div>
+                                            <% if(usuario.getTipo().equals("ADMIN")){ %>
+                                                <a class="link-btn btn-new"
+                                                    href="/AquaVidaManager/views/cadastro-tanque.jsp">
+                                                    Novo Tanque
+                                                </a>
+                                                <% } %>
 
-                                                                <div class="card-info">
-                                                                    <strong>Ocupação:</strong>
-                                                                    <%= t.getOcupacaoAtual() %>
-                                                                </div>
+                                                    <% if(erro !=null){ %>
 
-                                                                <div class="card-info">
-                                                                    <strong>Disponível:</strong>
-                                                                    <%= t.getEspacosDisponiveis() %>
-                                                                </div>
+                                                        <div class="alert">
+                                                            <%= erro %>
+                                                        </div>
 
-                                                                <div class="card-info">
-                                                                    <strong>Temperatura:</strong>
-                                                                    <%= t.getTemperaturaIdeal() %> °C
-                                                                </div>
+                                                        <% } %>
 
-                                                                <div class="card-info">
-                                                                    <strong>pH:</strong>
-                                                                    <%= t.getPhIdeal() %>
-                                                                </div>
+                                                            <div class="cards-container">
 
-                                                                <div class="progress-container">
+                                                                <% for(Tanque t : lista){ %>
 
-                                                                    <% int percentual=t.getPercentualOcupacao(); String
-                                                                        barraClasse="progress-safe" ; String
-                                                                        statusClasse="status-safe" ; if(percentual>=
-                                                                        80){
+                                                                    <div class="card">
 
-                                                                        barraClasse =
-                                                                        "progress-danger";
+                                                                        <h2>
+                                                                            <%= t.getNome() %>
+                                                                        </h2>
 
-                                                                        statusClasse =
-                                                                        "status-danger";
-
-                                                                        }
-                                                                        else if(percentual >= 50){
-
-                                                                        barraClasse =
-                                                                        "progress-warning";
-
-                                                                        statusClasse =
-                                                                        "status-warning";
-
-                                                                        }
-
-                                                                        %>
-
-                                                                        <div class="progress-bar <%= barraClasse %>"
-                                                                            style="width: <%= percentual %>%">
-                                                                            <%= percentual %>%
+                                                                        <div class="card-info">
+                                                                            <strong>Capacidade:</strong>
+                                                                            <%= t.getCapacidade() %>
                                                                         </div>
 
-                                                                </div>
+                                                                        <div class="card-info">
+                                                                            <strong>Ocupação:</strong>
+                                                                            <%= t.getOcupacaoAtual() %>
+                                                                        </div>
 
-                                                                <div class="status-badge <%= statusClasse %>">
-                                                                    <%= t.getStatusLotacao() %>
-                                                                </div>
+                                                                        <div class="card-info">
+                                                                            <strong>Disponível:</strong>
+                                                                            <%= t.getEspacosDisponiveis() %>
+                                                                        </div>
 
-                                                                <div class="card-actions">
-                                                                    <% if(usuario.getTipo().equals("ADMIN")){ %>
-                                                                        <a class="link-btn btn-edit"
-                                                                            href="/AquaVidaManager/tanques?acao=editar&id=<%= t.getId() %>">
-                                                                            Editar
-                                                                        </a>
+                                                                        <div class="card-info">
+                                                                            <strong>Temperatura:</strong>
+                                                                            <%= t.getTemperaturaIdeal() %> °C
+                                                                        </div>
 
-                                                                        <a class="link-btn btn-delete"
-                                                                            href="/AquaVidaManager/tanques?acao=excluir&id=<%= t.getId() %>">
-                                                                            Excluir
-                                                                        </a>
-                                                                        <% } %>
-                                                                </div>
+                                                                        <div class="card-info">
+                                                                            <strong>pH:</strong>
+                                                                            <%= t.getPhIdeal() %>
+                                                                        </div>
+
+                                                                        <div class="progress-container">
+
+                                                                            <% int percentual=t.getPercentualOcupacao();
+                                                                                String barraClasse="progress-safe" ;
+                                                                                String statusClasse="status-safe" ;
+                                                                                if(percentual>=
+                                                                                80){
+
+                                                                                barraClasse =
+                                                                                "progress-danger";
+
+                                                                                statusClasse =
+                                                                                "status-danger";
+
+                                                                                }
+                                                                                else if(percentual >= 50){
+
+                                                                                barraClasse =
+                                                                                "progress-warning";
+
+                                                                                statusClasse =
+                                                                                "status-warning";
+
+                                                                                }
+
+                                                                                %>
+
+                                                                                <div class="progress-bar <%= barraClasse %>"
+                                                                                    style="width: <%= percentual %>%">
+                                                                                    <%= percentual %>%
+                                                                                </div>
+
+                                                                        </div>
+
+                                                                        <div class="status-badge <%= statusClasse %>">
+                                                                            <%= t.getStatusLotacao() %>
+                                                                        </div>
+
+                                                                        <div class="card-actions">
+                                                                            <% if(usuario.getTipo().equals("ADMIN")){ %>
+                                                                                <a class="link-btn btn-edit"
+                                                                                    href="/AquaVidaManager/tanques?acao=editar&id=<%= t.getId() %>">
+                                                                                    Editar
+                                                                                </a>
+
+                                                                                <a class="link-btn btn-delete"
+                                                                                    href="/AquaVidaManager/tanques?acao=excluir&id=<%= t.getId() %>"
+                                                                                    onclick="return confirm('Deseja excluir este tanque?')">
+                                                                                    Excluir
+                                                                                </a>
+                                                                                <% } %>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <% } %>
 
                                                             </div>
-
-                                                            <% } %>
-
-                                                    </div>
 
                                 </div>
 

@@ -93,12 +93,16 @@ public class SalvarTanqueAction implements Action {
                     Integer.parseInt(idStr)
             );
             dao.atualizar(tanque);
+            resp.sendRedirect(
+                    "/AquaVidaManager/tanques?sucesso=editado"
+            );
         }else{
             dao.salvar(tanque);
+            resp.sendRedirect(
+                    "/AquaVidaManager/tanques?sucesso=salvo"
+            );
+
         }
-        resp.sendRedirect(
-                "/AquaVidaManager/tanques"
-        );
 
     }
 

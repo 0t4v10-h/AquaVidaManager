@@ -63,7 +63,7 @@ public class ExcluirPeixeAction implements Action {
             );
         }
         resp.sendRedirect(
-                "/AquaVidaManager/peixes"
+                "/AquaVidaManager/peixes?sucesso=excluido"
         );
 
     }

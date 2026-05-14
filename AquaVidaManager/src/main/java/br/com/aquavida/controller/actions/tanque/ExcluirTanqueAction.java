@@ -24,7 +24,7 @@ public class ExcluirTanqueAction implements Action {
                         req.getSession()
                                 .getAttribute("user");
 
-        if(!usuario.getTipo().equals("ADMIN")){
+        if (!usuario.getTipo().equals("ADMIN")) {
 
             resp.sendRedirect(
                     "/AquaVidaManager/dashboard"
@@ -40,29 +40,33 @@ public class ExcluirTanqueAction implements Action {
         TanqueDAO dao =
                 new TanqueDAO();
 
-        if(dao.possuiPeixes(id)){
+        if (dao.possuiPeixes(id)) {
 
             req.setAttribute(
                     "erro",
                     "Não é possível excluir um tanque com peixes cadastrados."
             );
 
-        }else{
+            ArrayList<Tanque> lista =
+                    dao.listar();
+
+            req.setAttribute(
+                    "listaTanques",
+                    lista
+            );
+
+            req.getRequestDispatcher(
+                    "views/listar-tanques.jsp"
+            ).forward(req, resp);
+
+        } else {
+
             dao.excluir(id);
+
+            resp.sendRedirect(
+                    "/AquaVidaManager/tanques?sucesso=excluido"
+            );
+
         }
-
-        ArrayList<Tanque> lista =
-                dao.listar();
-
-        req.setAttribute(
-                "listaTanques",
-                lista
-        );
-
-        req.getRequestDispatcher(
-                "views/listar-tanques.jsp"
-        ).forward(req, resp);
-
     }
-
 }

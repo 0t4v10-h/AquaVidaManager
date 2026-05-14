@@ -56,18 +56,18 @@ public class VendaController extends HttpServlet {
 
     @Override
     protected void doPost(
-            HttpServletRequest request,
-            HttpServletResponse response)
+            HttpServletRequest req,
+            HttpServletResponse resp)
             throws ServletException, IOException {
 
         int peixeId =
                 Integer.parseInt(
-                        request.getParameter("peixeId")
+                        req.getParameter("peixeId")
                 );
 
         int quantidadeVendida =
                 Integer.parseInt(
-                        request.getParameter("quantidade")
+                        req.getParameter("quantidade")
                 );
 
         Peixe peixe =
@@ -103,7 +103,7 @@ public class VendaController extends HttpServlet {
 
         }
 
-        response.sendRedirect("/AquaVidaManager/vendas");
+        resp.sendRedirect("/AquaVidaManager/vendas?sucesso=registrada");
 
     }
 

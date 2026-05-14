@@ -168,15 +168,26 @@ public class SalvarPeixeAction implements Action {
             peixe.setId(
                     Integer.parseInt(idStr)
             );
+
             dao.atualizar(peixe);
+
+            tanqueDAO.atualizarOcupacao(
+                    peixe.getTanqueId()
+            );
+
+            resp.sendRedirect(
+                    "/AquaVidaManager/peixes?sucesso=editado"
+            );
         }else{
             dao.salvar(peixe);
+            tanqueDAO.atualizarOcupacao(
+                    peixe.getTanqueId()
+            );
+
+            resp.sendRedirect(
+                    "/AquaVidaManager/peixes?sucesso=salvo"
+            );
+
         }
-        tanqueDAO.atualizarOcupacao(
-                peixe.getTanqueId()
-        );
-        resp.sendRedirect(
-                "/AquaVidaManager/peixes"
-        );
     }
 }

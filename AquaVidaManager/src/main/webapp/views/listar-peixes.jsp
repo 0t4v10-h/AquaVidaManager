@@ -60,141 +60,163 @@
                                         Gerenciamento de Peixes
                                     </h1>
 
-                                    <% String erro=(String) session.getAttribute("erro"); if(erro !=null){ %>
+                                    <% String sucesso=request.getParameter("sucesso"); if(sucesso !=null){ %>
 
-                                        <div class="alert">
-                                            <%= erro %>
-                                        </div>
+                                        <div class="success">
 
-                                        <% session.removeAttribute("erro"); } %>
-
-                                            <% if(usuario.getTipo().equals("ADMIN")){ %>
-
-                                                <a class="link-btn btn-new" href="/AquaVidaManager/peixes?acao=novo">
-                                                    Novo Peixe
-                                                </a>
-
+                                            <% if(sucesso.equals("salvo")) { %>
+                                                Peixe cadastrado com sucesso!
                                                 <% } %>
 
-                                                    <div class="cards-container">
+                                                    <% if(sucesso.equals("editado")) { %>
+                                                        Peixe atualizado com sucesso!
+                                                        <% } %>
 
-                                                        <% for(Peixe p : lista){ %>
+                                                            <% if(sucesso.equals("excluido")) { %>
+                                                                Peixe excluído com sucesso!
+                                                                <% } %>
 
-                                                            <div class="card">
+                                        </div>
 
-                                                                <h2>
-                                                                    <%= p.getNome() %>
-                                                                </h2>
+                                        <% } %>
 
-                                                                <div class="card-info">
+                                            <% String erro=(String) session.getAttribute("erro"); if(erro !=null){ %>
 
-                                                                    <strong>
-                                                                        ID:
-                                                                    </strong>
+                                                <div class="alert">
+                                                    <%= erro %>
+                                                </div>
 
-                                                                    <span>
-                                                                        <%= p.getId() %>
-                                                                    </span>
+                                                <% session.removeAttribute("erro"); } %>
 
-                                                                </div>
+                                                    <% if(usuario.getTipo().equals("ADMIN")){ %>
 
-                                                                <div class="card-info">
+                                                        <a class="link-btn btn-new"
+                                                            href="/AquaVidaManager/peixes?acao=novo">
+                                                            Novo Peixe
+                                                        </a>
 
-                                                                    <strong>
-                                                                        Espécie:
-                                                                    </strong>
+                                                        <% } %>
 
-                                                                    <span>
-                                                                        <%= p.getEspecie() %>
-                                                                    </span>
+                                                            <div class="cards-container">
 
-                                                                </div>
+                                                                <% for(Peixe p : lista){ %>
 
-                                                                <div class="card-info">
+                                                                    <div class="card">
 
-                                                                    <strong>
-                                                                        Quantidade:
-                                                                    </strong>
+                                                                        <h2>
+                                                                            <%= p.getNome() %>
+                                                                        </h2>
 
-                                                                    <span>
-                                                                        <%= p.getQuantidade() %>
-                                                                    </span>
+                                                                        <div class="card-info">
 
-                                                                </div>
+                                                                            <strong>
+                                                                                ID:
+                                                                            </strong>
 
-                                                                <div class="card-info">
+                                                                            <span>
+                                                                                <%= p.getId() %>
+                                                                            </span>
 
-                                                                    <strong>
-                                                                        Tanque:
-                                                                    </strong>
+                                                                        </div>
 
-                                                                    <span>
-                                                                        <%= p.getNomeTanque() %>
-                                                                    </span>
+                                                                        <div class="card-info">
 
-                                                                </div>
+                                                                            <strong>
+                                                                                Espécie:
+                                                                            </strong>
 
-                                                                <div class="card-info">
+                                                                            <span>
+                                                                                <%= p.getEspecie() %>
+                                                                            </span>
 
-                                                                    <strong>
-                                                                        Peso Médio:
-                                                                    </strong>
+                                                                        </div>
 
-                                                                    <span>
-                                                                        <%= p.getPesoMedio() %> kg
-                                                                    </span>
+                                                                        <div class="card-info">
 
-                                                                </div>
+                                                                            <strong>
+                                                                                Quantidade:
+                                                                            </strong>
 
-                                                                <div class="card-info">
+                                                                            <span>
+                                                                                <%= p.getQuantidade() %>
+                                                                            </span>
 
-                                                                    <strong>
-                                                                        Preço/Kg:
-                                                                    </strong>
+                                                                        </div>
 
-                                                                    <span>
-                                                                        R$ <%= p.getPrecoKg() %>
-                                                                    </span>
+                                                                        <div class="card-info">
 
-                                                                </div>
+                                                                            <strong>
+                                                                                Tanque:
+                                                                            </strong>
 
-                                                                <div class="card-info">
+                                                                            <span>
+                                                                                <%= p.getNomeTanque() %>
+                                                                            </span>
 
-                                                                    <strong>
-                                                                        Valor Estimado:
-                                                                    </strong>
+                                                                        </div>
 
-                                                                    <span>
-                                                                        R$
-                                                                        <%= p.getQuantidade() * p.getPesoMedio() *
-                                                                            p.getPrecoKg() %>
-                                                                    </span>
+                                                                        <div class="card-info">
 
-                                                                </div>
+                                                                            <strong>
+                                                                                Peso Médio:
+                                                                            </strong>
 
-                                                                <% if(usuario.getTipo().equals("ADMIN")){ %>
+                                                                            <span>
+                                                                                <%= p.getPesoMedio() %> kg
+                                                                            </span>
 
-                                                                    <div class="card-actions">
+                                                                        </div>
 
-                                                                        <a class="link-btn btn-edit"
-                                                                            href="/AquaVidaManager/peixes?acao=editar&id=<%= p.getId() %>">
-                                                                            Editar
-                                                                        </a>
+                                                                        <div class="card-info">
 
-                                                                        <a class="link-btn btn-delete"
-                                                                            href="/AquaVidaManager/peixes?acao=excluir&id=<%= p.getId() %>">
-                                                                            Excluir
-                                                                        </a>
+                                                                            <strong>
+                                                                                Preço/Kg:
+                                                                            </strong>
+
+                                                                            <span>
+                                                                                R$ <%= p.getPrecoKg() %>
+                                                                            </span>
+
+                                                                        </div>
+
+                                                                        <div class="card-info">
+
+                                                                            <strong>
+                                                                                Valor Estimado:
+                                                                            </strong>
+
+                                                                            <span>
+                                                                                R$
+                                                                                <%= p.getQuantidade() * p.getPesoMedio()
+                                                                                    * p.getPrecoKg() %>
+                                                                            </span>
+
+                                                                        </div>
+
+                                                                        <% if(usuario.getTipo().equals("ADMIN")){ %>
+
+                                                                            <div class="card-actions">
+
+                                                                                <a class="link-btn btn-edit"
+                                                                                    href="/AquaVidaManager/peixes?acao=editar&id=<%= p.getId() %>">
+                                                                                    Editar
+                                                                                </a>
+
+                                                                                <a class="link-btn btn-delete"
+                                                                                    href="/AquaVidaManager/peixes?acao=excluir&id=<%= p.getId() %>"
+                                                                                    onclick="return confirm('Deseja excluir este peixe?')">
+                                                                                    Excluir
+                                                                                </a>
+
+                                                                            </div>
+
+                                                                            <% } %>
 
                                                                     </div>
 
                                                                     <% } %>
 
                                                             </div>
-
-                                                            <% } %>
-
-                                                    </div>
 
                                 </div>
 
