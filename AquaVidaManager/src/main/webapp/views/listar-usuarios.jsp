@@ -40,8 +40,8 @@
                                     Vendas
                                 </a>
 
-                                <a href="/AquaVidaManager/usuarios">
-                                    Usuários
+                                <a href="/AquaVidaManager/parametros">
+                                    Parâmetros
                                 </a>
 
                                 <a href="/AquaVidaManager/logout">

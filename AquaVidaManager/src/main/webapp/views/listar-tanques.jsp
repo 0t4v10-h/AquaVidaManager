@@ -41,6 +41,10 @@
                                             Vendas
                                         </a>
 
+                                        <a href="/AquaVidaManager/parametros">
+                                            Parâmetros
+                                        </a>
+
                                         <% if(usuario.getTipo().equals("ADMIN")){ %>
 
                                             <a href="/AquaVidaManager/usuarios">
@@ -122,12 +126,12 @@
                                                                         </div>
 
                                                                         <div class="card-info">
-                                                                            <strong>Temperatura:</strong>
+                                                                            <strong>Temperatura ideal:</strong>
                                                                             <%= t.getTemperaturaIdeal() %> °C
                                                                         </div>
 
                                                                         <div class="card-info">
-                                                                            <strong>pH:</strong>
+                                                                            <strong>pH ideal:</strong>
                                                                             <%= t.getPhIdeal() %>
                                                                         </div>
 

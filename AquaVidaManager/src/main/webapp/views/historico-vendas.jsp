@@ -42,6 +42,10 @@
                                                         Tanques
                                                     </a>
 
+                                                    <a href="/AquaVidaManager/parametros">
+                                                        Parâmetros
+                                                    </a>
+
                                                     <% if(usuario.getTipo().equals("ADMIN")){ %>
 
                                                         <a href="/AquaVidaManager/usuarios">

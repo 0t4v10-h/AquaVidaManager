@@ -246,6 +246,7 @@ button {
     padding-bottom: 10px;
     border-bottom: 1px solid #e2e8f0;
     color: #334155;
+    word-break: break-word;
 }
 
 .card-info strong {
