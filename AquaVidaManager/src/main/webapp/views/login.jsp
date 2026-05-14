@@ -5,7 +5,7 @@
 
         <head>
 
-            <title>AquaVidaManager</title>
+            <title>AquaVida Peixes Ornamentais</title>
             <link rel="stylesheet" href="/AquaVidaManager/css/style.css?v=10">
 
         </head>
@@ -14,9 +14,9 @@
 
             <div class="login-container">
 
-                <div class="login-card">
+                <img src="/AquaVidaManager/assets/img/logo2.png" class="login-logo">
 
-                    <h1>AquaVidaManager</h1>
+                <div class="login-card">
 
                     <p class="subtitle">
                         Controle inteligente de tanques e peixes

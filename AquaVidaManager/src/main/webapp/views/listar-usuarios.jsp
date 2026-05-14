@@ -8,18 +8,10 @@
                     request.getAttribute("listaUsuarios");
                     %>
 
-                    <!DOCTYPE html>
-
-                    <html lang="pt-br">
+                    <html>
 
                     <head>
-
-                        <meta charset="UTF-8">
-
-                        <title>
-                            Usuários
-                        </title>
-
+                        <title> Usuários</title>
                         <link rel="stylesheet" href="/AquaVidaManager/css/style.css?v=10">
 
                     </head>
@@ -28,9 +20,7 @@
 
                         <div class="navbar">
 
-                            <div class="logo">
-                                AquaVidaManager
-                            </div>
+                            <img src="/AquaVidaManager/assets/img/logo.png" class="navbar-logo">
 
                             <div class="menu">
 

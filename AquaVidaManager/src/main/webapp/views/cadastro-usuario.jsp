@@ -4,7 +4,6 @@
     <head>
 
         <title>Criar Usuário</title>
-
         <link rel="stylesheet" href="/AquaVidaManager/css/style.css?v=10">
 
     </head>
@@ -13,13 +12,11 @@
 
         <div class="login-container">
 
+            <img src="/AquaVidaManager/assets/img/logo2.png" class="login-logo">
+
             <div class="login-card">
 
                 <h1>Criar Usuário</h1>
-
-                <p class="subtitle">
-                    Cadastre um novo acesso ao sistema
-                </p>
 
                 <% if(request.getAttribute("erro") !=null){ %>
 

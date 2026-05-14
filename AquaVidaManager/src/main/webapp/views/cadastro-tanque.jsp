@@ -13,7 +13,7 @@
 
         <div class="navbar">
 
-            <div class="logo">AquaVidaManager</div>
+            <img src="/AquaVidaManager/assets/img/logo.png" class="navbar-logo">
 
         </div>
 
