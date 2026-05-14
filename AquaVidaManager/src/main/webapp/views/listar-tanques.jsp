@@ -41,9 +41,17 @@
                                             Vendas
                                         </a>
 
-                                        <a href="/AquaVidaManager/logout">
-                                            Sair
-                                        </a>
+                                        <% if(usuario.getTipo().equals("ADMIN")){ %>
+
+                                            <a href="/AquaVidaManager/usuarios">
+                                                Usuários
+                                            </a>
+
+                                            <% } %>
+
+                                                <a href="/AquaVidaManager/logout">
+                                                    Sair
+                                                </a>
 
                                     </div>
 
