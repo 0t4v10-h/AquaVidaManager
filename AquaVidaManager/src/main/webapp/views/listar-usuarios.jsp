@@ -20,7 +20,7 @@
                             Usuários
                         </title>
 
-                        <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+                        <link rel="stylesheet" href="/AquaVidaManager/css/style.css?v=10">
 
                     </head>
 
