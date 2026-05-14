@@ -18,7 +18,7 @@
 
                                         <head>
                                             <title>Vendas</title>
-                                            <link rel="stylesheet" href="/AquaVidaManager/css/style.css">
+                                            <link rel="stylesheet" href="/AquaVidaManager/css/style.css?v=10">
                                         </head>
 
                                         <body>
@@ -99,51 +99,68 @@
 
                                                 </div>
 
-                                                <h2>Histórico de Vendas</h2>
+                                                <h2 class="section-title">
+                                                    Histórico de Vendas
+                                                </h2>
 
-                                                <div class="cards-container">
+                                                <div class="sales-list">
+
                                                     <% if(vendas.isEmpty()) { %>
-                                                        <div class="card">
-                                                            <p>
+
+                                                        <div class="sale-item">
+
+                                                            <div class="sale-info">
+
                                                                 Nenhuma venda registrada.
-                                                            </p>
+
+                                                            </div>
+
                                                         </div>
+
                                                         <% } %>
 
                                                             <% for(Venda venda : vendas) { %>
 
-                                                                <div class="card">
+                                                                <div class="sale-item">
 
-                                                                    <h2>
-                                                                        Venda de <%= venda.getNomePeixe() %>
-                                                                    </h2>
+                                                                    <div class="sale-info">
 
-                                                                    <div class="card-info">
+                                                                        <strong>
+                                                                            <%= venda.getNomePeixe() %>
+                                                                        </strong>
+
+                                                                    </div>
+
+                                                                    <div class="sale-info">
+
                                                                         <strong>
                                                                             Quantidade:
                                                                         </strong>
-                                                                        <span>
-                                                                            <%= venda.getQuantidade() %>
-                                                                        </span>
+
+                                                                        <%= venda.getQuantidade() %>
+
                                                                     </div>
 
-                                                                    <div class="card-info">
+                                                                    <div class="sale-info">
+
                                                                         <strong>
                                                                             Valor:
                                                                         </strong>
-                                                                        <span>
-                                                                            R$ <%= String.format("%.2f",
-                                                                                venda.getValorTotal()) %>
-                                                                        </span>
+
+                                                                        R$
+                                                                        <%= String.format("%.2f", venda.getValorTotal())
+                                                                            %>
+
                                                                     </div>
 
-                                                                    <div class="card-info">
+                                                                    <div class="sale-info">
+
                                                                         <strong>
                                                                             Data:
                                                                         </strong>
-                                                                        <span>
-                                                                            <%= venda.getDataVenda() %>
-                                                                        </span>
+
+                                                                        <%= venda.getDataVenda() %>
+
                                                                     </div>
 
                                                                 </div>
