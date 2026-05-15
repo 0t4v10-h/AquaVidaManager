@@ -135,6 +135,22 @@
                                                                             <%= t.getPhIdeal() %>
                                                                         </div>
 
+                                                                        <div class="card-info">
+                                                                            <strong>Parâmetros da Água:</strong>
+                                                                            <div
+                                                                                class="status-badge <%= t.getClasseStatus() %>">
+                                                                                <%= t.getStatusAgua() %>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="card-info">
+                                                                            <strong>Última Medição:</strong>
+                                                                            <span>
+                                                                                <%= t.getUltimaMedicao() %>
+                                                                            </span>
+                                                                        </div>
+
+                                                                        <strong>Status de Superlotação:</strong>
                                                                         <div class="progress-container">
 
                                                                             <% int percentual=t.getPercentualOcupacao();
@@ -150,6 +166,7 @@
                                                                                 "status-danger";
 
                                                                                 }
+
                                                                                 else if(percentual >= 50){
 
                                                                                 barraClasse =
@@ -161,6 +178,7 @@
                                                                                 }
 
                                                                                 %>
+
 
                                                                                 <div class="progress-bar <%= barraClasse %>"
                                                                                     style="width: <%= percentual %>%">

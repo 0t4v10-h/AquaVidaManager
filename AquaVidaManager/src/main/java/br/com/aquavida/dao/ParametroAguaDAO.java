@@ -159,4 +159,71 @@ public class ParametroAguaDAO {
 
         return lista;
     }
+
+    public ParametroAgua buscarUltimoPorTanque(int tanqueId) {
+
+        String sql = """
+        SELECT *
+        FROM parametro_agua
+        WHERE tanque_id = ?
+        ORDER BY data_medicao DESC
+        LIMIT 1
+    """;
+
+        try {
+
+            Connection conn =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conn.prepareStatement(sql);
+
+            stmt.setInt(1, tanqueId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+
+                ParametroAgua p =
+                        new ParametroAgua();
+
+                p.setId(rs.getInt("id"));
+
+                p.setTanqueId(
+                        rs.getInt("tanque_id")
+                );
+
+                p.setTemperatura(
+                        rs.getDouble("temperatura")
+                );
+
+                p.setPh(
+                        rs.getDouble("ph")
+                );
+
+                p.setAmonia(
+                        rs.getDouble("amonia")
+                );
+
+                p.setDataMedicao(
+                        rs.getTimestamp("data_medicao")
+                                .toLocalDateTime()
+                );
+
+                rs.close();
+                stmt.close();
+                conn.close();
+
+                return p;
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

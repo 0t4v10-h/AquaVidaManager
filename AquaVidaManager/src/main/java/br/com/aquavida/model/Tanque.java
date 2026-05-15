@@ -16,6 +16,12 @@ public class Tanque {
 
     private int espacosDisponiveis;
 
+    private String statusAgua;
+
+    private String classeStatus;
+
+    private String ultimaMedicao;
+
     public Tanque() {
     }
 
@@ -98,5 +104,29 @@ public class Tanque {
         }
 
         return "Seguro";
+    }
+
+    public String getStatusAgua() {
+        return statusAgua;
+    }
+
+    public void setStatusAgua(String statusAgua) {
+        this.statusAgua = statusAgua;
+    }
+
+    public String getClasseStatus() {
+        return classeStatus;
+    }
+
+    public void setClasseStatus(String classeStatus) {
+        this.classeStatus = classeStatus;
+    }
+
+    public String getUltimaMedicao() {
+        return ultimaMedicao;
+    }
+
+    public void setUltimaMedicao(String ultimaMedicao) {
+        this.ultimaMedicao = ultimaMedicao;
     }
 }
