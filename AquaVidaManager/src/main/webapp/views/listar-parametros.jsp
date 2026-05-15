@@ -85,7 +85,6 @@
                                                                         Nova Medição
                                                                     </a>
 
-                                                                    <!-- FILTRO -->
                                                                     <form action="/AquaVidaManager/parametros"
                                                                         method="get" style="margin: 16px 0;">
                                                                         <label>Filtrar por tanque:</label>
@@ -109,57 +108,66 @@
                                                                         </select>
                                                                     </form>
 
-                                                                    <!-- CARDS -->
                                                                     <div class="cards-container">
 
-                                                                        <% for (ParametroAgua p : lista) { %>
-
-                                                                            <div class="card">
-
-                                                                                <h2>
-                                                                                    <%= p.getNomeTanque() %>
-                                                                                </h2>
-
-                                                                                <div class="card-info">
-                                                                                    <strong>Data:</strong>
-                                                                                    <span>
-                                                                                        <%= p.getDataMedicao().format(fmt)
-                                                                                            %>
-                                                                                    </span>
-                                                                                </div>
-
-                                                                                <div class="card-info">
-                                                                                    <strong>Temperatura:</strong>
-                                                                                    <span>
-                                                                                        <%= p.getTemperatura() %>
-                                                                                    </span>
-                                                                                </div>
-
-                                                                                <div class="card-info">
-                                                                                    <strong>pH:</strong>
-                                                                                    <span>
-                                                                                        <%= p.getPh() %>
-                                                                                    </span>
-                                                                                </div>
-
-                                                                                <div class="card-info">
-                                                                                    <strong>Amônia:</strong>
-                                                                                    <span>
-                                                                                        <%= p.getAmonia() %>
-                                                                                    </span>
-                                                                                </div>
-
-                                                                                <div class="card-info">
-                                                                                    <strong>Status:</strong>
-                                                                                    <span
-                                                                                        class="status-badge <%= p.getClasseCss() %>">
-                                                                                        <%= p.getStatusGeral() %>
-                                                                                    </span>
-                                                                                </div>
-
-                                                                            </div>
-
+                                                                        <% if (lista.isEmpty()) { %>
+                                                                            <p>Nenhuma medição cadastrada.</p>
                                                                             <% } %>
+                                                                                <% for (ParametroAgua p : lista) { %>
+
+                                                                                    <div class="card">
+
+                                                                                        <h2>
+                                                                                            <%= p.getNomeTanque() %>
+                                                                                        </h2>
+
+                                                                                        <div class="card-info">
+                                                                                            <strong>Data:</strong>
+                                                                                            <span>
+                                                                                                <%= p.getDataMedicao()
+                                                                                                    !=null ?
+                                                                                                    p.getDataMedicao().format(fmt)
+                                                                                                    : "-" %>
+                                                                                            </span>
+                                                                                        </div>
+
+                                                                                        <div class="card-info">
+                                                                                            <strong>Temperatura:</strong>
+                                                                                            <span>
+                                                                                                <%= String.format("%.1f",
+                                                                                                    p.getTemperatura())
+                                                                                                    %>
+                                                                                            </span>
+                                                                                        </div>
+
+                                                                                        <div class="card-info">
+                                                                                            <strong>pH:</strong>
+                                                                                            <span>
+                                                                                                <%= String.format("%.1f",
+                                                                                                    p.getPh()) %>
+                                                                                            </span>
+                                                                                        </div>
+
+                                                                                        <div class="card-info">
+                                                                                            <strong>Amônia:</strong>
+                                                                                            <span>
+                                                                                                <%= String.format("%.2f",
+                                                                                                    p.getAmonia()) %>
+                                                                                            </span>
+                                                                                        </div>
+
+                                                                                        <div class="card-info">
+                                                                                            <strong>Status:</strong>
+                                                                                            <span
+                                                                                                class="status-badge <%= p.getClasseCss() %>">
+                                                                                                <%= p.getStatusGeral()
+                                                                                                    %>
+                                                                                            </span>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <% } %>
 
                                                                     </div>
 
