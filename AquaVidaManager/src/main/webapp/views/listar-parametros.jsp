@@ -86,26 +86,40 @@
                                                                     </a>
 
                                                                     <form action="/AquaVidaManager/parametros"
-                                                                        method="get" style="margin: 16px 0;">
+                                                                        method="get" class="filter-form">
+
                                                                         <label>Filtrar por tanque:</label>
 
                                                                         <select name="tanqueId"
                                                                             onchange="this.form.submit()">
-                                                                            <option value="">Todos os tanques</option>
+
+                                                                            <option value="">
+                                                                                Todos os tanques
+                                                                            </option>
 
                                                                             <% for (Tanque t : listaTanques) { boolean
                                                                                 selecionado=tanqueFiltrado !=null &&
-                                                                                tanqueFiltrado.equals(String.valueOf(t.getId()));
-                                                                                %>
+                                                                                tanqueFiltrado.equals(
+                                                                                String.valueOf(t.getId()) ); %>
 
                                                                                 <option value="<%= t.getId() %>"
                                                                                     <%=selecionado ? "selected" : "" %>>
+
                                                                                     <%= t.getNome() %>
+
                                                                                 </option>
 
                                                                                 <% } %>
 
                                                                         </select>
+
+                                                                        <a class="link-btn btn-cancel"
+                                                                            href="/AquaVidaManager/parametros">
+
+                                                                            Limpar Filtro
+
+                                                                        </a>
+
                                                                     </form>
 
                                                                     <div class="cards-container">

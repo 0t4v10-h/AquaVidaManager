@@ -371,4 +371,65 @@ public class PeixeDAO {
 
     }
 
+    public ArrayList<Peixe> listarPorTanque(int tanqueId){
+
+        ArrayList<Peixe> lista = new ArrayList<>();
+
+        String sql = """
+            SELECT p.*, t.nome AS nome_tanque
+            FROM peixe p
+            INNER JOIN tanque t
+            ON p.tanque_id = t.id
+            WHERE tanque_id = ?
+            ORDER BY p.nome
+        """;
+
+        try{
+
+            Connection conn =
+                    ConnectionFactory.getConnection();
+
+            PreparedStatement stmt =
+                    conn.prepareStatement(sql);
+
+            stmt.setInt(1, tanqueId);
+
+            ResultSet rs =
+                    stmt.executeQuery();
+
+            while(rs.next()){
+
+                Peixe p = new Peixe();
+
+                p.setId(rs.getInt("id"));
+
+                p.setNome(rs.getString("nome"));
+
+                p.setEspecie(rs.getString("especie"));
+
+                p.setQuantidade(rs.getInt("quantidade"));
+
+                p.setPesoMedio(rs.getDouble("peso_medio"));
+
+                p.setPrecoKg(rs.getDouble("preco_kg"));
+
+                p.setTanqueId(rs.getInt("tanque_id"));
+
+                p.setNomeTanque(
+                        rs.getString("nome_tanque")
+                );
+
+                lista.add(p);
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return lista;
+    }
+
 }
