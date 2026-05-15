@@ -222,8 +222,9 @@
                                                                                             </strong>
 
                                                                                             <span>
-                                                                                                <%= p.getPesoMedio() %>
-                                                                                                    kg
+                                                                                                <%= String.format("%.1f",
+                                                                                                    p.getPesoMedio()).replace(".", ","
+                                                                                                    ) %> kg
                                                                                             </span>
 
                                                                                         </div>
@@ -235,7 +236,10 @@
                                                                                             </strong>
 
                                                                                             <span>
-                                                                                                R$ <%= p.getPrecoKg() %>
+                                                                                                R$ <%=
+                                                                                                    String.format("%.2f",
+                                                                                                    p.getPrecoKg()).replace(".", ","
+                                                                                                    ) %>
                                                                                             </span>
 
                                                                                         </div>
@@ -248,9 +252,12 @@
 
                                                                                             <span>
                                                                                                 R$
-                                                                                                <%= p.getQuantidade() *
-                                                                                                    p.getPesoMedio() *
-                                                                                                    p.getPrecoKg() %>
+                                                                                                <%= String.format( "%.2f"
+                                                                                                    , p.getQuantidade()
+                                                                                                    * p.getPesoMedio() *
+                                                                                                    p.getPrecoKg()
+                                                                                                    ).replace(".", "," )
+                                                                                                    %>
                                                                                             </span>
 
                                                                                         </div>

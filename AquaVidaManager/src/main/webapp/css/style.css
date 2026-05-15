@@ -86,6 +86,12 @@ select {
     box-sizing: border-box;
 }
 
+.form-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
 /* BOTÕES */
 button {
     border: none;
@@ -93,7 +99,6 @@ button {
     font-weight: bold;
 }
 
-/* LINKS / BOTÕES */
 .link-btn {
     text-decoration: none;
     padding: 10px 14px;
@@ -144,6 +149,26 @@ button {
     padding: 12px;
     border-radius: 6px;
     margin-bottom: 20px;
+}
+
+.success {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 6px solid #22c55e;
+    font-weight: bold;
+}
+
+.alert-dashboard {
+    background-color: #fef3c7;
+    color: #92400e;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    border-left: 6px solid #f59e0b;
 }
 
 /* LOGIN */
@@ -335,13 +360,6 @@ button {
     background-color: #0284c7;
 }
 
-/* FORMULÁRIOS */
-.form-buttons {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
 /* OCUPAÇÃO */
 .progress-container {
     width: 100%;
@@ -396,15 +414,6 @@ button {
     background-color: #ef4444;
 }
 
-.alert-dashboard {
-    background-color: #fef3c7;
-    color: #92400e;
-    padding: 18px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    font-weight: bold;
-    border-left: 6px solid #f59e0b;
-}
 
 /* HISTÓRICO DE VENDAS */
 .sales-list {
@@ -443,17 +452,7 @@ button {
     color: #0f172a;
 }
 
-/* CONFIRMAÇÃO */
-.success {
-    background-color: #dcfce7;
-    color: #166534;
-    padding: 14px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border-left: 6px solid #22c55e;
-    font-weight: bold;
-}
-
+/* FILTROS */
 .filter-form {
     margin-top: 20px;
     margin-bottom: 30px;
