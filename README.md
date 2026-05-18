@@ -1,10 +1,10 @@
-## AquaVidaManager
+# AquaVidaManager
 Sistema web desenvolvido para gerenciamento de piscicultura, permitindo o controle de tanques, peixes, vendas, parâmetros da água e gerenciamento de usuários com diferentes níveis de permissão.
 
 O projeto foi desenvolvido utilizando arquitetura MVC com Java Web, JSP, Servlets, JDBC e MySQL.
 
 
-## Funcionalidades
+# Funcionalidades
 * Gerenciamento de Tanques
 * Cadastro de tanques;
 * Edição e exclusão;
@@ -18,7 +18,7 @@ O projeto foi desenvolvido utilizando arquitetura MVC com Java Web, JSP, Servlet
 * Edição e exclusão de registros.
 
 
-# Controle Inteligente de Lotação dos Tanques
+## Controle Inteligente de Lotação dos Tanques
 Funcionalidade bônus desenvolvida no projeto.
 
 O sistema:
@@ -35,14 +35,14 @@ Objetivo:
 * automatizar regras de negócio importantes do sistema.
 
 
-# Controle de Usuários e Permissões
+## Controle de Usuários e Permissões
 O sistema possui dois tipos de usuários:
 
 * ADMIN;
 * USER.
 
 
-# Permissões ADMIN
+## Permissões ADMIN
 * cadastrar registros;
 * editar registros;
 * excluir registros;
@@ -50,18 +50,18 @@ O sistema possui dois tipos de usuários:
 * acessar funcionalidades administrativas.
 
 
-# Permissões USER
+## Permissões USER
 * acesso limitado às funcionalidades do sistema;
 * visualização de informações.
 
 
-# Registro de Vendas
+## Registro de Vendas
 * Cadastro de vendas;
 * Histórico de vendas realizadas;
 * Controle de saída de peixes.
 
 
-# Monitoramento da Água
+## Monitoramento da Água
 Cadastro de:
 
 * temperatura;
@@ -70,39 +70,39 @@ Cadastro de:
 * medições vinculadas aos tanques.
 
 
-## Tecnologias Utilizadas
-# Backend:
+# Tecnologias Utilizadas
+## Backend:
 * Java
 * Servlets
 * JDBC
 
-# Frontend:
+## Frontend:
 * JSP
 * HTML
 * CSS
 * JavaScript
 
-# Banco de Dados
+## Banco de Dados
 * MySQL
 
-# Arquitetura
+## Arquitetura
 * MVC (Model-View-Controller)
 
 
-## Fluxo do Sistema
+# Fluxo do Sistema
 O sistema segue o padrão MVC:
 
-# View (JSP)
+## View (JSP)
 Responsável pelas interfaces do sistema.
 
-# Controller (Servlets/Actions)
+## Controller (Servlets/Actions)
 Responsável por:
 * receber requisições;
 * validar dados;
 * aplicar regras de negócio;
 * controlar o fluxo da aplicação.
 
-# Model
+## Model
 Representação das entidades:
 * usuário;
 * tanque;
@@ -110,12 +110,12 @@ Representação das entidades:
 * venda;
 * parâmetros da água.
 
-# DAO
+## DAO
 Responsável pela comunicação com o banco de dados.
 
 
-## Funcionalidade Destaque
-# Controle Inteligente de Lotação
+# Funcionalidade Destaque
+## Controle Inteligente de Lotação
 Fluxo da funcionalidade:
 
 1. Usuário realiza cadastro do peixe;
@@ -131,7 +131,7 @@ Fluxo da funcionalidade:
     * dados são salvos no banco de dados.
 
 
-## Segurança e Controle de Acesso
+# Segurança e Controle de Acesso
 O sistema utiliza:
 
 * autenticação por login;
@@ -141,7 +141,7 @@ O sistema utiliza:
 As funcionalidades administrativas ficam disponíveis apenas para usuários ADMIN.
 
 
-## Banco de Dados
+# Banco de Dados
 Principais tabelas:
 * usuario
 * tanque
@@ -155,7 +155,7 @@ Relacionamentos:
 * controle de usuários e permissões.
 
 
-## Objetivo do Projeto
+# Objetivo do Projeto
 O AquaVidaManager foi desenvolvido com o objetivo de aplicar conceitos de:
 
 * desenvolvimento Java Web;
@@ -165,7 +165,7 @@ O AquaVidaManager foi desenvolvido com o objetivo de aplicar conceitos de:
 * regras de negócio;
 * organização de sistema em camadas.
 
-## Demonstração do Sistema
+# Demonstração do Sistema
 Vídeo demonstrando o funcionamento do AquaVidaManager e explicação de algumas funcionalidades:
 
 [https://drive.google.com/file/d/1C59AELyzjCoBHQ78rP4arS73f08FhzRO/view?usp=drive_link](LINK_DO_VIDEO)
